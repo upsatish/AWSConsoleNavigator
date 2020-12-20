@@ -1,0 +1,6 @@
+{
+  "name": "AWS Console Search",
+  "description": "To use, type 'awss' plus an AWS resource ID into the Omnibox.",
+  "version": "1.0.0",
+  "manifest_version": 2
+}
