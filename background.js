@@ -41,8 +41,18 @@ function getNewURL(text) {
     var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#igws:search=${encodeURIComponent(text)}`;
     return (newUrl);
   }
+  // NACL
+  else if (text.startsWith("acl-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#acls:filter=${encodeURIComponent(text)}`;
+    return (newUrl);
+  }
+  // Subnet
+  else if (text.startsWith("subnet-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#subnets:filter=${encodeURIComponent(text)}`;
+    return (newUrl);
+  }
   else {
-    alert("Sorry, that AWS resource is currently not supported"); // TODO: navigate to unsupported resource contributing URL
+    alert("Sorry, the AWS resource is currently unsupported"); // TODO: navigate to unsupported resource contributing URL
   }
 }
 

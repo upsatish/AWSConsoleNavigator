@@ -18,5 +18,8 @@
   },
   "permissions": [
     "storage"
-  ]
+  ],
+  "icons": {
+    "140": "Region_dark-bg@4x.png"
+  }
 }
