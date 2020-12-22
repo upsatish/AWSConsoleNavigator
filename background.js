@@ -31,7 +31,7 @@ function getNewURL(text) {
     var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#TransitGateways:transitGatewayId=${encodeURIComponent(text)}`;
     return (newUrl);
   }
-  // DHCP options
+  // DHCP option
   else if (text.startsWith("dopt-") == true) {
     var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#dhcpOptions:filter=${encodeURIComponent(text)}`;
     return (newUrl);
@@ -41,7 +41,7 @@ function getNewURL(text) {
     var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#igws:search=${encodeURIComponent(text)}`;
     return (newUrl);
   }
-  // NACL
+  // Network ACL
   else if (text.startsWith("acl-") == true) {
     var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#acls:filter=${encodeURIComponent(text)}`;
     return (newUrl);
@@ -49,6 +49,11 @@ function getNewURL(text) {
   // Subnet
   else if (text.startsWith("subnet-") == true) {
     var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#subnets:filter=${encodeURIComponent(text)}`;
+    return (newUrl);
+  }
+  // Route table
+  else if (text.startsWith("rtb-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#routetables:filter=${encodeURIComponent(text)}`;
     return (newUrl);
   }
   else {
