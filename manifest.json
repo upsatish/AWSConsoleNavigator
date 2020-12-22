@@ -11,5 +11,12 @@
   },
   "omnibox": {
     "keyword": "awss"
-  }
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Click to set AWS region"
+  },
+  "permissions": [
+    "storage"
+  ]
 }
