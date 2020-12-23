@@ -1,5 +1,5 @@
 {
-  "name": "AWS Console Search",
+  "name": "AWS Console Navigator",
   "description": "To use, type 'awss' space an AWS resource ID into the Omnibox.",
   "version": "1.0.0",
   "manifest_version": 2,
