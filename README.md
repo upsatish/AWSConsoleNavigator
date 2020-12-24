@@ -62,3 +62,4 @@ These resources could not be supported.
 - [ ] Add JSDoc
 - [ ] Organize code and docs by categories - compute, networks, storage, database, etc.
 - [ ] Add automated tests?
+- [ ] Fix cloudformation to describe rather than list stack
