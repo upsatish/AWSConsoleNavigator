@@ -138,7 +138,7 @@ function parseARN(arn) {
   else if (sections.length == 6) {
     var resource = sections[5];
     var resourceSections = resource.split("/");
-    if (resourceSections.length == 2) {
+    if (resourceSections.length >= 2) {
       resourceType = resourceSections[0];
       resourceID = resourceSections[1];
       return { service: service, region: region, resourceType: resourceType, resourceID: resourceID };
@@ -243,6 +243,14 @@ function getNewURLFromResourceType(service, region, resourceType, resourceID) {
   // AMI
   else if (service == 'ec2' && resourceType == 'image') {
     var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // Cloudformation stack
+  else if (service == 'cloudformation' && resourceType == 'stack') {
+    var stackResourceID = resourceID.split("/")
+    var stackName = stackResourceID[0];
+    var stackID = stackResourceID[1];
+    var newUrl = `https://${region}.console.aws.amazon.com/cloudformation/home?region=${region}#/stacks?filteringText=${stackName}&filteringStatus=active&viewNested=true&hideStacks=false`;
     return (newUrl);
   }
   else {

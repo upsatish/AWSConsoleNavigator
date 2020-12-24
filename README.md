@@ -38,6 +38,7 @@ The following resources can be navigated by ARN only.
 - Lambda function
 - Cloudwatch events rule
 - Cloudwatch log group
+- Cloudformation stack
 
 ## Unsupported resources
 
