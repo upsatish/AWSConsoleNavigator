@@ -56,6 +56,26 @@ function getNewURLFromResourceID(text) {
     var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#routetables:filter=${text}`;
     return (newUrl);
   }
+  // Network interface
+  else if (text.startsWith("eni-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#NIC:networkInterfaceId=${text};sort=networkInterfaceId`;
+    return (newUrl);
+  }
+  // Volume
+  else if (text.startsWith("vol-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Volumes:volumeId=${text};sort=desc:createTime`;
+    return (newUrl);
+  }
+  // Key pair
+  else if (text.startsWith("key-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#KeyPairs:key-pair-id=${text}`;
+    return (newUrl);
+  }
+  // AMI
+  else if (text.startsWith("ami-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Images:visibility=owned-by-me;imageId=${text};sort=name`;
+    return (newUrl);
+  }
   else {
     alert("Sorry, unsupported AWS resource"); // TODO: navigate to unsupported resource contributing URL
   }
@@ -159,5 +179,73 @@ function getNewURLFromResourceType(service, region, resourceType, resourceID) {
   else if (service == 'logs' && resourceType == 'log-group') {
     var newUrl = `https://${region}.console.aws.amazon.com/cloudwatch/home?region=${region}#logsV2:log-groups/log-group/${encodeURIComponent(resourceID)}`;
     return (newUrl);
+  }
+  // VPC
+  else if (service == 'ec2' && resourceType == 'vpc') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // EC2 instance
+  else if (service == 'ec2' && resourceType == 'instance') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // Security group
+  else if (service == 'ec2' && resourceType == 'security-group') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // Transit gateway
+  else if (service == 'ec2' && resourceType == 'transit-gateway') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // DHCP options
+  else if (service == 'ec2' && resourceType == 'dhcp-options') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // Internet gateway
+  else if (service == 'ec2' && resourceType == 'internet-gateway') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // Network ACL
+  else if (service == 'ec2' && resourceType == 'network-acl') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // Subnet
+  else if (service == 'ec2' && resourceType == 'subnet') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // Route table
+  else if (service == 'ec2' && resourceType == 'route-table') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // Network interface
+  else if (service == 'ec2' && resourceType == 'network-interface') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // Volume
+  else if (service == 'ec2' && resourceType == 'volume') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // Key pair
+  else if (service == 'ec2' && resourceType == 'key-pair') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // AMI
+  else if (service == 'ec2' && resourceType == 'image') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  else {
+    alert("Sorry, unsupported AWS resource"); // TODO: navigate to unsupported resource contributing URL
   }
 }

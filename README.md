@@ -9,34 +9,39 @@ Sign in to an AWS account to access the AWS management console.
 
 ## Supported resources
 
-### Navigate by resource ID
+### Navigate by resource ID or ARN
 
-The following resources can be navigated by resource ID.
+Resources that can be navigated by resource ID or ARN.
 
-| Resource type    | Resource ID starts with |
-| ---------------- | ----------------------- |
-| VPC              | vpc-                    |
-| EC2 instance     | i-                      |
-| Security group   | sg-                     |
-| Transit gateway  | tgw-                    |
-| DHCP options     | dopt-                   |
-| Internet gateway | igw-                    |
-| Network ACL      | nacl-                   |
-| Subnet           | subnet-                 |
-| Route table      | rtb-                    |
+| Resource type     | Resource ID starts with |
+| ----------------- | ----------------------- |
+| VPC               | vpc-                    |
+| EC2 instance      | i-                      |
+| Security group    | sg-                     |
+| Transit gateway   | tgw-                    |
+| DHCP option       | dopt-                   |
+| Internet gateway  | igw-                    |
+| Network ACL       | nacl-                   |
+| Subnet            | subnet-                 |
+| Route table       | rtb-                    |
+| Network interface | eni-                    |
+| Volume            | vol-                    |
+| Key pair          | key-                    |
+| AMI               | ami-                    |
 
-### Navigate by ARN
+### Navigate by ARN only
 
-The following resources can be navigated by ARN.
+The following resources can be navigated by ARN only.
 
 - S3 bucket
 - Codebuild project
 - Lambda function
 - Cloudwatch events rule
+- Cloudwatch log group
 
 ## Unsupported resources
 
-These resources could not be supported
+These resources could not be supported.
 
 - Transit gateway attachment (tgw-attach-)
 - DB security group
@@ -45,9 +50,7 @@ These resources could not be supported
 ## TODO
 
 - [ ] Add CONTRIBUTING.MD
-- [ ] Create ARN navigation for resources supported by ResourceID
 - [ ] Add more supported resources
-- [ ] Rename github repository to AWS Console Navigator
 - [ ] Currently developed and tested on Google Chrome - port and test to Firefox
 - [ ] Search for all TODOs in the project and complete
 - [ ] For an unsupported resource, navigate to an unsupported resource or contributing page
@@ -55,3 +58,5 @@ These resources could not be supported
 - [ ] Run ESLint on source code
 - [ ] Add images to README
 - [ ] Add JSDoc
+- [ ] Organize code and docs by categories - compute, networks, storage, database, etc.
+- [ ] Add automated tests?
