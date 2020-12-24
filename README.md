@@ -39,6 +39,7 @@ The following resources can be navigated by ARN only.
 - Cloudwatch events rule
 - Cloudwatch log group
 - Cloudformation stack
+- Secretsmanager secret
 
 ## Unsupported resources
 

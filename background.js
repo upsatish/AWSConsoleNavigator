@@ -180,6 +180,12 @@ function getNewURLFromResourceType(service, region, resourceType, resourceID) {
     var newUrl = `https://${region}.console.aws.amazon.com/cloudformation/home?region=${region}#/stacks?filteringText=${stackName}&filteringStatus=active&viewNested=true&hideStacks=false`;
     return (newUrl);
   }
+  // Secretsmanager secret
+  else if (service == 'secretsmanager' && resourceType == 'secret') {
+    var secretName = resourceID.substring(0, resourceID.length-7);
+    var newUrl = `https://${region}.console.aws.amazon.com/secretsmanager/home?region=${region}#/secret?name=${secretName}`;
+    return (newUrl);
+  }
   else {
     alert("Sorry, unsupported AWS resource"); // TODO: navigate to unsupported resource contributing URL
   }
