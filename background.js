@@ -81,79 +81,6 @@ function getNewURLFromResourceID(text) {
   }
 }
 
-chrome.runtime.onInstalled.addListener(function () {
-  chrome.storage.sync.set({ region: 'us-east-1' });
-});
-
-chrome.omnibox.onInputStarted.addListener(function () {
-  chrome.storage.sync.get('region', function (data) { setRegion(data.region) });
-});
-
-chrome.omnibox.onInputChanged.addListener(
-  function (text, suggest) {
-    suggest([
-      {
-        content: "Region is set to " + region + " - AWS Console Navigator",
-        description: "Region is set to " + region + " - AWS Console Navigator"
-      },
-      {
-        content: "Click the AWS Console Navigator extension icon to select the AWS region - AWS Console Navigator",
-        description: "Click the AWS Console Navigator extension icon to select the AWS region - AWS Console Navigator"
-      }
-    ]);
-  });
-
-chrome.omnibox.onInputEntered.addListener(
-  function (text) {
-    // Navigate by ARN
-    if (text.startsWith("arn:") == true) {
-      var sections = parseARN(text);
-      var service = sections.service;
-      if (sections.region.length != 0)
-        region = sections.region;
-      var resourceType = sections.resourceType;
-      var resourceID = sections.resourceID;
-      var newURL = getNewURLFromResourceType(service, region, resourceType, resourceID);
-      navigate(newURL);
-    }
-    else {
-      // Navigate by Resource ID
-      var newURL = getNewURLFromResourceID(text);
-      navigate(newURL);
-    }
-  });
-
-function parseARN(arn) {
-  var sections = arn.split(":");
-  var service = sections[2];
-  if (sections[3].length != 0)
-    region = sections[3];
-  var resourceType;
-  var resourceID;
-  if (sections.length >= 7) {
-    resourceType = sections[5];
-    resourceID = sections[6];
-    return { service: service, region: region, resourceType: resourceType, resourceID: resourceID };
-  }
-  else if (sections.length == 6) {
-    var resource = sections[5];
-    var resourceSections = resource.split("/");
-    if (resourceSections.length >= 2) {
-      resourceType = resourceSections[0];
-      resourceID = resourceSections[1];
-      return { service: service, region: region, resourceType: resourceType, resourceID: resourceID };
-    }
-    else {
-      resourceType = undefined;
-      resourceID = sections[5];
-      return { service: service, region: region, resourceType: resourceType, resourceID: resourceID };
-    }
-  }
-  else {
-    alert("Sorry, unsupported AWS resource"); // TODO: navigate to unsupported resource contributing URL
-  }
-}
-
 function getNewURLFromResourceType(service, region, resourceType, resourceID) {
   // S3 bucket
   if (service == 's3') {
@@ -252,6 +179,79 @@ function getNewURLFromResourceType(service, region, resourceType, resourceID) {
     var stackID = stackResourceID[1];
     var newUrl = `https://${region}.console.aws.amazon.com/cloudformation/home?region=${region}#/stacks?filteringText=${stackName}&filteringStatus=active&viewNested=true&hideStacks=false`;
     return (newUrl);
+  }
+  else {
+    alert("Sorry, unsupported AWS resource"); // TODO: navigate to unsupported resource contributing URL
+  }
+}
+
+chrome.runtime.onInstalled.addListener(function () {
+  chrome.storage.sync.set({ region: 'us-east-1' });
+});
+
+chrome.omnibox.onInputStarted.addListener(function () {
+  chrome.storage.sync.get('region', function (data) { setRegion(data.region) });
+});
+
+chrome.omnibox.onInputChanged.addListener(
+  function (text, suggest) {
+    suggest([
+      {
+        content: "Region is set to " + region + " - AWS Console Navigator",
+        description: "Region is set to " + region + " - AWS Console Navigator"
+      },
+      {
+        content: "Click the AWS Console Navigator extension icon to select the AWS region - AWS Console Navigator",
+        description: "Click the AWS Console Navigator extension icon to select the AWS region - AWS Console Navigator"
+      }
+    ]);
+  });
+
+chrome.omnibox.onInputEntered.addListener(
+  function (text) {
+    // Navigate by ARN
+    if (text.startsWith("arn:") == true) {
+      var sections = parseARN(text);
+      var service = sections.service;
+      if (sections.region.length != 0)
+        region = sections.region;
+      var resourceType = sections.resourceType;
+      var resourceID = sections.resourceID;
+      var newURL = getNewURLFromResourceType(service, region, resourceType, resourceID);
+      navigate(newURL);
+    }
+    else {
+      // Navigate by Resource ID
+      var newURL = getNewURLFromResourceID(text);
+      navigate(newURL);
+    }
+  });
+
+function parseARN(arn) {
+  var sections = arn.split(":");
+  var service = sections[2];
+  if (sections[3].length != 0)
+    region = sections[3];
+  var resourceType;
+  var resourceID;
+  if (sections.length >= 7) {
+    resourceType = sections[5];
+    resourceID = sections[6];
+    return { service: service, region: region, resourceType: resourceType, resourceID: resourceID };
+  }
+  else if (sections.length == 6) {
+    var resource = sections[5];
+    var resourceSections = resource.split("/");
+    if (resourceSections.length >= 2) {
+      resourceType = resourceSections[0];
+      resourceID = resourceSections[1];
+      return { service: service, region: region, resourceType: resourceType, resourceID: resourceID };
+    }
+    else {
+      resourceType = undefined;
+      resourceID = sections[5];
+      return { service: service, region: region, resourceType: resourceType, resourceID: resourceID };
+    }
   }
   else {
     alert("Sorry, unsupported AWS resource"); // TODO: navigate to unsupported resource contributing URL
