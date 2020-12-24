@@ -44,13 +44,14 @@ These resources could not be supported
 
 ## TODO
 
+- [ ] Add CONTRIBUTING.MD
+- [ ] Create ARN navigation for resources supported by ResourceID
+- [ ] Add more supported resources
+- [ ] Rename github repository to AWS Console Navigator
 - [ ] Currently developed and tested on Google Chrome - port and test to Firefox
-- [ ] Add more supported URLs
 - [ ] Search for all TODOs in the project and complete
 - [ ] For an unsupported resource, navigate to an unsupported resource or contributing page
-- [ ] Update README navigate by ARN section to a table with service and resource type
-- [ ] Create ARN navigation for resources supported by ResourceID
+- [ ] Update README Navigate by ARN section to a table with service and resource type
 - [ ] Run ESLint on source code
-- [ ] Rename github repository to AWS Console Navigator
 - [ ] Add images to README
 - [ ] Add JSDoc
