@@ -81,6 +81,11 @@ function getNewURLFromResourceID(text) {
     var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#VpnGateways:search=${text};sort=VpnGatewayId`;
     return (newUrl);
   }
+  // EC2 snapshot
+  else if (text.startsWith('snap-') == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Snapshots:visibility=owned-by-me;snapshotId=${text};sort=snapshotId`;
+    return (newUrl);
+  }
   else {
     unsupportedResourceAlert(text);
   }
@@ -231,6 +236,11 @@ function getNewURLFromResourceType(service, region, resourceType, resourceID) {
     var newUrl = `https://${region}.console.aws.amazon.com/sns/v3/home?region=${region}#/topic/arn:aws:sns:${region}::${resourceID}`;
     return (newUrl);
   }
+  // State machine state
+  else if (service == 'states' && resourceType == 'stateMachine') {
+    var newUrl = `https://${region}.console.aws.amazon.com/states/home?region=${region}#/statemachines/view/arn:aws:states:${region}::stateMachine:${resourceID}`;
+    return (newUrl);
+  }
   else {
     unsupportedResourceAlert(resourceType);
   }
@@ -263,6 +273,7 @@ function getServiceFromResourceType(service) {
   map.set('task-definition', 'ecs');
   map.set('cluster', 'rds');
   map.set('db', 'rds');
+  map.set('stateMachine', 'states');
   return map.get(service);
 }
 

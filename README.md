@@ -83,3 +83,4 @@ These resources could not be supported.
 - [ ] Fix VSCode snippets
 - [ ] Fix RDS cluster ARN substring lookup
 - [ ] Fix SNS navigation Couldn't retrieve topic attributes. Error code: InvalidParameter - Error message: Invalid parameter: AccountId
+- [ ] Add EC2 snapshot ARN navigation
