@@ -1,7 +1,7 @@
 # AWS Console Navigator
 
 AWS Console Navigator Chrome extension. Navigate to AWS resources in the console from the Omnibox.
-To use, type 'awss' space an AWS resource ID into the Omnibox.
+To use, type 'awss' space an AWS resource ID, ARN or "service:resourceID" into the Omnibox.
 
 Click the AWS Console Navigator extension icon to select the AWS region.
 
@@ -48,11 +48,14 @@ These resources could not be supported.
 - Transit gateway attachment (tgw-attach-)
 - DB security group
 - KMS key
+- Config rule
 
 ## TODO
 
 - [ ] Add CONTRIBUTING.MD
 - [ ] Add more supported resources
+- [ ] Add support for ARN substring
+- [ ] Add unit test for getNewURL functions
 - [ ] Currently developed and tested on Google Chrome - port and test to Firefox
 - [ ] Search for all TODOs in the project and complete
 - [ ] For an unsupported resource, navigate to an unsupported resource or contributing page
@@ -61,5 +64,6 @@ These resources could not be supported.
 - [ ] Add images to README
 - [ ] Add JSDoc
 - [ ] Organize code and docs by categories - compute, networks, storage, database, etc.
-- [ ] Add automated tests?
+- [ ] Add automated tests to build pipeline
 - [ ] Fix cloudformation to describe rather than list stack
+- [ ] Add international language support / translation

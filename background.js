@@ -77,7 +77,7 @@ function getNewURLFromResourceID(text) {
     return (newUrl);
   }
   else {
-    alert("Sorry, unsupported AWS resource"); // TODO: navigate to unsupported resource contributing URL
+    unsupportedResourceAlert(text);
   }
 }
 
@@ -182,12 +182,12 @@ function getNewURLFromResourceType(service, region, resourceType, resourceID) {
   }
   // Secretsmanager secret
   else if (service == 'secretsmanager' && resourceType == 'secret') {
-    var secretName = resourceID.substring(0, resourceID.length-7);
+    var secretName = resourceID.substring(0, resourceID.length - 7);
     var newUrl = `https://${region}.console.aws.amazon.com/secretsmanager/home?region=${region}#/secret?name=${secretName}`;
     return (newUrl);
   }
   else {
-    alert("Sorry, unsupported AWS resource"); // TODO: navigate to unsupported resource contributing URL
+    unsupportedResourceAlert(resourceType);
   }
 }
 
@@ -227,7 +227,7 @@ chrome.omnibox.onInputEntered.addListener(
       navigate(newURL);
     }
     else if (text.includes(":") == true) {
-      // Navigate by resource type with "short" ARN resourceType:resourceID
+      // Navigate by resource type with resourceType:resourceID (ARN substring)
       var sections = text.split(":");
       var resourceType = sections[0];
       var resourceID = sections[1];
@@ -235,10 +235,13 @@ chrome.omnibox.onInputEntered.addListener(
       var newURL = getNewURLFromResourceType(service, region, resourceType, resourceID);
       navigate(newURL);
     }
-    else {
+    else if (text.includes("-") == true) {
       // Navigate by Resource ID
       var newURL = getNewURLFromResourceID(text);
       navigate(newURL);
+    }
+    else {
+      unsupportedResourceAlert(text);
     }
   });
 
@@ -269,7 +272,7 @@ function parseARN(arn) {
     }
   }
   else {
-    alert("Sorry, unsupported AWS resource"); // TODO: navigate to unsupported resource contributing URL
+    unsupportedResourceAlert(arn);
   }
 }
 
@@ -295,4 +298,18 @@ function getServiceFromResourceType(service) {
   map.set('stack', 'cloudformation');
   map.set('secret', 'secretsmanager');
   return map.get(service);
+}
+
+function unsupportedResourceAlert(text) {
+  alert(
+`Sorry, unsupported AWS resource - ${text}.
+
+Try navigating by:
+* Resource ID
+* ARN
+* resourceType:resourceID (ARN substring)
+
+If the resource is unsupported, please submit an issue or pull request to the AWSConsoleNavigator project on GitHub, thank you.
+https://github.com/upsatish/AWSConsoleNavigator`
+  ); // TODO: navigate to unsupported resource contributing URL
 }
