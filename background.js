@@ -226,6 +226,15 @@ chrome.omnibox.onInputEntered.addListener(
       var newURL = getNewURLFromResourceType(service, region, resourceType, resourceID);
       navigate(newURL);
     }
+    else if (text.includes(":") == true) {
+      // Navigate by resource type with "short" ARN resourceType:resourceID
+      var sections = text.split(":");
+      var resourceType = sections[0];
+      var resourceID = sections[1];
+      var service = getServiceFromResourceType(resourceType);
+      var newURL = getNewURLFromResourceType(service, region, resourceType, resourceID);
+      navigate(newURL);
+    }
     else {
       // Navigate by Resource ID
       var newURL = getNewURLFromResourceID(text);
@@ -262,4 +271,28 @@ function parseARN(arn) {
   else {
     alert("Sorry, unsupported AWS resource"); // TODO: navigate to unsupported resource contributing URL
   }
+}
+
+function getServiceFromResourceType(service) {
+  var map = new Map();
+  map.set('project', 'codebuild');
+  map.set('function', 'lambda');
+  map.set('rule', 'events');
+  map.set('log-group', 'logs');
+  map.set('vpc', 'ec2');
+  map.set('instance', 'ec2');
+  map.set('security-group', 'ec2');
+  map.set('transit-gateway', 'ec2');
+  map.set('dhcp-options', 'ec2');
+  map.set('internet-gateway', 'ec2');
+  map.set('network-acl', 'ec2');
+  map.set('subnet', 'ec2');
+  map.set('route-table', 'ec2');
+  map.set('network-interface', 'ec2');
+  map.set('volume', 'ec2');
+  map.set('key-pair', 'ec2');
+  map.set('image', 'ec2');
+  map.set('stack', 'cloudformation');
+  map.set('secret', 'secretsmanager');
+  return map.get(service);
 }
