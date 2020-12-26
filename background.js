@@ -302,7 +302,7 @@ function getServiceFromResourceType(service) {
 
 function unsupportedResourceAlert(text) {
   alert(
-`Sorry, unsupported AWS resource - ${text}.
+    `Sorry, unsupported AWS resource - ${text}.
 
 Try navigating by:
 * Resource ID
