@@ -54,7 +54,6 @@ These resources could not be supported.
 
 - [ ] Add CONTRIBUTING.MD
 - [ ] Add more supported resources
-- [ ] Add support for ARN substring
 - [ ] Add unit test for getNewURL functions
 - [ ] Currently developed and tested on Google Chrome - port and test to Firefox
 - [ ] Search for all TODOs in the project and complete
