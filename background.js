@@ -76,6 +76,11 @@ function getNewURLFromResourceID(text) {
     var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Images:visibility=owned-by-me;imageId=${text};sort=name`;
     return (newUrl);
   }
+  // Virtual private gateway
+  else if (text.startsWith('vgw-') == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#VpnGateways:search=${text};sort=VpnGatewayId`;
+    return (newUrl);
+  }
   else {
     unsupportedResourceAlert(text);
   }
@@ -186,6 +191,46 @@ function getNewURLFromResourceType(service, region, resourceType, resourceID) {
     var newUrl = `https://${region}.console.aws.amazon.com/secretsmanager/home?region=${region}#/secret?name=${secretName}`;
     return (newUrl);
   }
+  // DynamoDB table
+  else if (service == 'dynamodb' && resourceType == 'table') {
+    var newUrl = `https://${region}.console.aws.amazon.com/dynamodb/home?region=${region}#tables:selected=${resourceID};tab=overview`;
+    return (newUrl);
+  }
+  // Virtual private gateway
+  else if (service == 'ec2' && resourceType == 'vpn-gateway') {
+    var newUrl = getNewURLFromResourceID(resourceID);
+    return (newUrl);
+  }
+  // ECS cluster
+  else if (service == 'ecs' && resourceType == 'cluster') {
+    var newUrl = `https://${region}.console.aws.amazon.com/ecs/home?region=${region}#/clusters/${resourceID}/services`;
+    return (newUrl);
+  }
+  // ECS task definition
+  else if (service == 'ecs' && resourceType == 'task-definition') {
+    var newUrl = `https://${region}.console.aws.amazon.com/ecs/home?region=${region}#/taskDefinitions/${resourceID}`;
+    return (newUrl);
+  }
+  // RDS cluster
+  else if (service == 'rds' && resourceType == 'cluster') {
+    var newUrl = `https://${region}.console.aws.amazon.com/rds/home?region=${region}#database:id=${resourceID};is-cluster=true`;
+    return (newUrl);
+  }
+  // RDS DB
+  else if (service == 'rds' && resourceType == 'db') {
+    var newUrl = `https://${region}.console.aws.amazon.com/rds/home?region=${region}#database:id=${resourceID};is-cluster=false`;
+    return (newUrl);
+  }
+  // SQS queue
+  else if (service == 'sqs') {
+    var newUrl = `https://${region}.console.aws.amazon.com/sqs/v2/home?region=${region}#/queues/https%3A%2F%2Fsqs.${region}.amazonaws.com%2F%2F${resourceID}`;
+    return (newUrl);
+  }
+  // SNS topic
+  else if (service == 'sns') {
+    var newUrl = `https://${region}.console.aws.amazon.com/sns/v3/home?region=${region}#/topic/arn:aws:sns:${region}::${resourceID}`;
+    return (newUrl);
+  }
   else {
     unsupportedResourceAlert(resourceType);
   }
@@ -212,6 +257,12 @@ function getServiceFromResourceType(service) {
   map.set('image', 'ec2');
   map.set('stack', 'cloudformation');
   map.set('secret', 'secretsmanager');
+  map.set('table', 'dynamodb');
+  map.set('vpn-gateway', 'ec2');
+  map.set('cluster', 'ecs');
+  map.set('task-definition', 'ecs');
+  map.set('cluster', 'rds');
+  map.set('db', 'rds');
   return map.get(service);
 }
 
@@ -250,17 +301,21 @@ chrome.omnibox.onInputEntered.addListener(
       var newURL = getNewURLFromResourceType(service, region, resourceType, resourceID);
       navigate(newURL);
     }
-    else if (text.includes(":") == true) {
-      // Navigate by resource type with resourceType:resourceID (ARN substring)
-      var sections = text.split(":");
+    // Navigate by resource type with resourceType:resourceID (ARN substring)
+    else if ((text.includes(":") == true) || (text.includes("/") == true)) {
+      var sections;
+      if (text.includes(":"))
+        sections = text.split(":");
+      if (text.includes("/"))
+        sections = text.split("/");
       var resourceType = sections[0];
       var resourceID = sections[1];
       var service = getServiceFromResourceType(resourceType);
       var newURL = getNewURLFromResourceType(service, region, resourceType, resourceID);
       navigate(newURL);
     }
+    // Navigate by Resource ID
     else if (text.includes("-") == true) {
-      // Navigate by Resource ID
       var newURL = getNewURLFromResourceID(text);
       navigate(newURL);
     }
