@@ -12,8 +12,8 @@ Welcome! Thank you for contributing to AWS Console Navigator. There are several 
 
 - Test and submit issues, bug reports or feature requests
 - Improve documentation
-- There are many AWS resource types that haven't been supported yet. Please submit a feature request and help test.
-- Fix bugs or implement feature requests
+- There are many AWS resource types that haven't been implemented yet. Please submit a feature request and help test.
+- Submit a pull request to fix bugs or implement feature requests
 - Help translate AWS Console Navigator to other languages
 - Share AWS Console Navigator with friends
 - See TODO list below for ideas
@@ -33,7 +33,7 @@ Create a new issue to report bugs or feature requests. For bugs, please include:
 - Steps to reproduce issue
 - Screenshots
 
-For new features, please include a detailed description.
+For new features, please include a detailed description with details of the service, resource type, console URL, ARN and any other detail.
 
 ### Pull requests
 
@@ -65,17 +65,18 @@ To add a new resource type:
 ## TODO
 
 - [ ] Add unit test for getNewURL functions
+- [ ] Move build pipeline to GitHub actions
 - [ ] Currently developed and tested on Google Chrome - port and test to Firefox
-- [ ] Search for all TODOs in the project and complete
-- [ ] For an unsupported resource, navigate to an unsupported resource or contributing page
+- [ ] Search for all TODOs in the project and code and complete
+- [ ] For an unsupported resource, navigate to contributing page if new tab, do not do for existing tab
 - [ ] Update README Navigate by ARN section to a table with service and resource type
 - [ ] Run ESLint on source code
 - [ ] Add images to README
 - [ ] Add JSDoc
-- [ ] Organize code and docs by categories - compute, networks, storage, database, etc.
+- [ ] Organize code and docs by categories - compute, networks, storage, database, etc. Currently is arbitrary
 - [ ] Add automated tests to build pipeline
 - [ ] Add international language support / translation
 - [ ] Fix VSCode snippets
 - [ ] Fix RDS cluster ARN substring map
-- [ ] Add EC2 snapshot ARN navigation
+- [ ] Any fix for EC2 snapshot ARN navigation? Currently defaults to snapshots "Owned by me"
 - [ ] Add more supported resources

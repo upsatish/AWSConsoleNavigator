@@ -3,15 +3,23 @@
 AWS Console Navigator Chrome extension. Navigate to AWS resources in the console from the Omnibox.
 To use, type keyword 'awss' space an ARN, AWS resource ID or service:resourceID (ARN substring) into the Omnibox.
 
-Click the AWS Console Navigator extension icon to select the AWS region.
-
 Sign in to an AWS account is required to access the AWS management console.
+
+![Image of user typing awss keyword and ARN into the Omnibox](img/Omnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
+
+![Image of the AWS Console Navigator extension](img/AWSConsoleNavigator.png "Image of the AWS Console Navigator extension")
+
+![Image of the AWS Console](img/AWSConsole.png "Image of the AWS Console")
+
+Click the AWS Console Navigator extension icon to select the AWS region for navigation by resource ID. The selected region is displayed as an Omnibox suggestion.
+
+![Image of AWS Console Navigator region selection popup](img/SelectRegion.png "Image of AWS Console Navigator region selection popup")
 
 ## Supported resources
 
 ### Navigate by resource ID or ARN or service:resourceID (ARN substring)
 
-Resources that can be navigated by resource ID or ARN or service:resourceID (ARN substring).
+Resources that can be navigated by resource ID or ARN or service:resourceID (ARN substring):
 
 - VPC
 - EC2 instance
@@ -30,7 +38,7 @@ Resources that can be navigated by resource ID or ARN or service:resourceID (ARN
 
 ### Navigate by ARN or service:resourceID (ARN substring) only
 
-The following resources can be navigated by ARN or service:resourceID (ARN substring) only.
+Resources that can be navigated by ARN or service:resourceID (ARN substring) only:
 
 - S3 bucket
 - Codebuild project
@@ -48,7 +56,9 @@ The following resources can be navigated by ARN or service:resourceID (ARN subst
 - State machine state
 - RDS cluster can be navigated by ARN only
 
-#### service:resourceID (ARN substring) example
+#### service:resourceID (ARN substring) format examples
+
+Examples of the service:resourceID (ARN substring) format:
 
 | ARN                                                             | service:resourceID (ARN substring) |
 | --------------------------------------------------------------- | ---------------------------------- |
@@ -57,7 +67,7 @@ The following resources can be navigated by ARN or service:resourceID (ARN subst
 
 ## Unsupported resources
 
-These resources could not be supported.
+These resources could not be supported:
 
 - Transit gateway attachment (tgw-attach-)
 - DB security group
