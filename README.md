@@ -5,15 +5,15 @@ To use, type keyword 'awss' space an ARN, AWS resource ID or service:resourceID 
 
 Sign in to an AWS account is required to access the AWS management console.
 
-![Image of user typing awss keyword and ARN into the Omnibox](img/Omnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
+![Image of user typing awss keyword and ARN into the Omnibox](img/awssKeywordOmnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
 
-![Image of the AWS Console Navigator extension](img/AWSConsoleNavigator.png "Image of the AWS Console Navigator extension")
+![Image of the AWS Console Navigator extension](img/AWSConsoleNavigatorExtension.png "Image of the AWS Console Navigator extension")
 
-![Image of the AWS Console](img/AWSConsole.png "Image of the AWS Console")
+![Image of an AWS resource in the console](img/AWSConsoleNavigated.png "Image of an AWS resource in the console")
 
 Click the AWS Console Navigator extension icon to select the AWS region for navigation by resource ID. The selected region is displayed as an Omnibox suggestion.
 
-![Image of AWS Console Navigator region selection popup](img/SelectRegion.png "Image of AWS Console Navigator region selection popup")
+![Image of AWS Console Navigator region selection popup](img/SelectRegionPopup.png "Image of AWS Console Navigator region selection popup")
 
 ## Supported resources
 
