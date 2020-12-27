@@ -64,21 +64,6 @@ These resources could not be supported.
 - KMS key
 - Config rule
 
-## TODO
+## Contributing
 
-- [ ] Add CONTRIBUTING.MD
-- [ ] Add unit test for getNewURL functions
-- [ ] Currently developed and tested on Google Chrome - port and test to Firefox
-- [ ] Search for all TODOs in the project and complete
-- [ ] For an unsupported resource, navigate to an unsupported resource or contributing page
-- [ ] Update README Navigate by ARN section to a table with service and resource type
-- [ ] Run ESLint on source code
-- [ ] Add images to README
-- [ ] Add JSDoc
-- [ ] Organize code and docs by categories - compute, networks, storage, database, etc.
-- [ ] Add automated tests to build pipeline
-- [ ] Add international language support / translation
-- [ ] Fix VSCode snippets
-- [ ] Fix RDS cluster ARN substring map
-- [ ] Add EC2 snapshot ARN navigation
-- [ ] Add more supported resources
+See [CONTRIBUTING.MD](CONTRIBUTING.MD).
