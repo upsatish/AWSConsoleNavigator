@@ -46,6 +46,8 @@ The following resources can be navigated by ARN or service:resourceID (ARN subst
 - ECS task definition
 - RDS DB
 - SQS queue
+- SNS topic
+- State machine state
 
 #### service:resourceID (ARN substring) example
 
@@ -77,10 +79,7 @@ These resources could not be supported.
 - [ ] Add JSDoc
 - [ ] Organize code and docs by categories - compute, networks, storage, database, etc.
 - [ ] Add automated tests to build pipeline
-- [ ] Fix cloudformation to describe stack using additional identifier
-- [ ] Fix ecs task definition to describe task definition using additional identifier
 - [ ] Add international language support / translation
 - [ ] Fix VSCode snippets
-- [ ] Fix RDS cluster ARN substring lookup
-- [ ] Fix SNS navigation Couldn't retrieve topic attributes. Error code: InvalidParameter - Error message: Invalid parameter: AccountId
+- [ ] Fix RDS cluster ARN substring map 
 - [ ] Add EC2 snapshot ARN navigation

@@ -91,7 +91,7 @@ function getNewURLFromResourceID(text) {
   }
 }
 
-function getNewURLFromResourceType(service, region, resourceType, resourceID) {
+function getNewURLFromResourceType(service, region, accountID, resourceType, resourceID, additionalID) {
   // S3 bucket
   if (service == 's3') {
     var newUrl = `https://${region}.console.aws.amazon.com/s3/buckets/${resourceID}?region=${region}&tab=properties`;
@@ -184,10 +184,9 @@ function getNewURLFromResourceType(service, region, resourceType, resourceID) {
   }
   // Cloudformation stack
   else if (service == 'cloudformation' && resourceType == 'stack') {
-    var stackResourceID = resourceID.split("/")
-    var stackName = stackResourceID[0];
-    var stackID = stackResourceID[1];
-    var newUrl = `https://${region}.console.aws.amazon.com/cloudformation/home?region=${region}#/stacks?filteringText=${stackName}&filteringStatus=active&viewNested=true&hideStacks=false`;
+    var stackName = resourceID;
+    var stackID = additionalID;
+    var newUrl = `https://${region}.console.aws.amazon.com/cloudformation/home?region=${region}#/stacks/stackinfo?stackId=arn%3Aaws%3Acloudformation%3A${region}%3A${accountID}%3Astack%2F${stackName}%2F${stackID}&filteringText=${stackName}&filteringStatus=active&viewNested=true&hideStacks=false`;
     return (newUrl);
   }
   // Secretsmanager secret
@@ -213,8 +212,15 @@ function getNewURLFromResourceType(service, region, resourceType, resourceID) {
   }
   // ECS task definition
   else if (service == 'ecs' && resourceType == 'task-definition') {
-    var newUrl = `https://${region}.console.aws.amazon.com/ecs/home?region=${region}#/taskDefinitions/${resourceID}`;
-    return (newUrl);
+    var newUrl;
+    if (additionalID) {
+      var newUrl = `https://${region}.console.aws.amazon.com/ecs/home?region=${region}#/taskDefinitions/${resourceID}/${additionalID}`;
+      return newUrl;
+    }
+    else {
+      var newUrl = `https://${region}.console.aws.amazon.com/ecs/home?region=${region}#/taskDefinitions/${resourceID}`;
+      return (newUrl);
+    }
   }
   // RDS cluster
   else if (service == 'rds' && resourceType == 'cluster') {
@@ -228,17 +234,17 @@ function getNewURLFromResourceType(service, region, resourceType, resourceID) {
   }
   // SQS queue
   else if (service == 'sqs') {
-    var newUrl = `https://${region}.console.aws.amazon.com/sqs/v2/home?region=${region}#/queues/https%3A%2F%2Fsqs.${region}.amazonaws.com%2F%2F${resourceID}`;
+    var newUrl = `https://${region}.console.aws.amazon.com/sqs/v2/home?region=${region}#/queues/https%3A%2F%2Fsqs.${region}.amazonaws.com%2F${accountID}%2F${resourceID}`;
     return (newUrl);
   }
   // SNS topic
   else if (service == 'sns') {
-    var newUrl = `https://${region}.console.aws.amazon.com/sns/v3/home?region=${region}#/topic/arn:aws:sns:${region}::${resourceID}`;
+    var newUrl = `https://${region}.console.aws.amazon.com/sns/v3/home?region=${region}#/topic/arn:aws:sns:${region}:${accountID}:${resourceID}`;
     return (newUrl);
   }
   // State machine state
   else if (service == 'states' && resourceType == 'stateMachine') {
-    var newUrl = `https://${region}.console.aws.amazon.com/states/home?region=${region}#/statemachines/view/arn:aws:states:${region}::stateMachine:${resourceID}`;
+    var newUrl = `https://${region}.console.aws.amazon.com/states/home?region=${region}#/statemachines/view/arn:aws:states:${region}:${accountID}:stateMachine:${resourceID}`;
     return (newUrl);
   }
   else {
@@ -307,9 +313,11 @@ chrome.omnibox.onInputEntered.addListener(
       var service = sections.service;
       if (sections.region.length != 0)
         region = sections.region;
+      var accountID = sections.accountID;
       var resourceType = sections.resourceType;
       var resourceID = sections.resourceID;
-      var newURL = getNewURLFromResourceType(service, region, resourceType, resourceID);
+      var additionalID = sections.additionalID;
+      var newURL = getNewURLFromResourceType(service, region, accountID, resourceType, resourceID, additionalID);
       navigate(newURL);
     }
     // Navigate by resource type with resourceType:resourceID (ARN substring)
@@ -321,8 +329,9 @@ chrome.omnibox.onInputEntered.addListener(
         sections = text.split("/");
       var resourceType = sections[0];
       var resourceID = sections[1];
+      var additionalID = sections[2];
       var service = getServiceFromResourceType(resourceType);
-      var newURL = getNewURLFromResourceType(service, region, resourceType, resourceID);
+      var newURL = getNewURLFromResourceType(service, region, undefined, resourceType, resourceID, additionalID);
       navigate(newURL);
     }
     // Navigate by Resource ID
@@ -340,12 +349,14 @@ function parseARN(arn) {
   var service = sections[2];
   if (sections[3].length != 0)
     region = sections[3];
+  var accountID = sections[4];
   var resourceType;
   var resourceID;
+  var additionalID;
   if (sections.length >= 7) {
     resourceType = sections[5];
     resourceID = sections[6];
-    return { service: service, region: region, resourceType: resourceType, resourceID: resourceID };
+    return { service: service, region: region, accountID: accountID, resourceType: resourceType, resourceID: resourceID };
   }
   else if (sections.length == 6) {
     var resource = sections[5];
@@ -353,12 +364,13 @@ function parseARN(arn) {
     if (resourceSections.length >= 2) {
       resourceType = resourceSections[0];
       resourceID = resourceSections[1];
-      return { service: service, region: region, resourceType: resourceType, resourceID: resourceID };
+      additionalID = resourceSections[2];
+      return { service: service, region: region, accountID: accountID, resourceType: resourceType, resourceID: resourceID, additionalID: additionalID };
     }
     else {
       resourceType = undefined;
       resourceID = sections[5];
-      return { service: service, region: region, resourceType: resourceType, resourceID: resourceID };
+      return { service: service, region: region, accountID: accountID, resourceType: resourceType, resourceID: resourceID };
     }
   }
   else {
