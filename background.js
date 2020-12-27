@@ -10,84 +10,84 @@ function setRegion(regionText) {
   region = regionText;
 }
 
-function getNewURLFromResourceID(text) {
+function getNewURLFromResourceID(resourceID) {
   // VPC
-  if (text.startsWith("vpc-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#VpcDetails:VpcId=${text}`;
+  if (resourceID.startsWith("vpc-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#VpcDetails:VpcId=${resourceID}`;
     return (newUrl);
   }
   // EC2 instance
-  else if (text.startsWith("i-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#InstanceDetails:instanceId=${text}`;
+  else if (resourceID.startsWith("i-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#InstanceDetails:instanceId=${resourceID}`;
     return (newUrl);
   }
   // Security group
-  else if (text.startsWith("sg-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#SecurityGroup:groupId=${text}`;
+  else if (resourceID.startsWith("sg-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#SecurityGroup:groupId=${resourceID}`;
     return (newUrl);
   }
   // Transit gateway
-  else if (text.startsWith("tgw-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#TransitGateways:transitGatewayId=${text}`;
+  else if (resourceID.startsWith("tgw-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#TransitGateways:transitGatewayId=${resourceID}`;
     return (newUrl);
   }
   // DHCP option
-  else if (text.startsWith("dopt-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#dhcpOptions:filter=${text}`;
+  else if (resourceID.startsWith("dopt-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#dhcpOptions:filter=${resourceID}`;
     return (newUrl);
   }
   // Internet gateway
-  else if (text.startsWith("igw-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#igws:search=${text}`;
+  else if (resourceID.startsWith("igw-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#igws:search=${resourceID}`;
     return (newUrl);
   }
   // Network ACL
-  else if (text.startsWith("acl-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#acls:filter=${text}`;
+  else if (resourceID.startsWith("acl-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#acls:filter=${resourceID}`;
     return (newUrl);
   }
   // Subnet
-  else if (text.startsWith("subnet-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#subnets:filter=${text}`;
+  else if (resourceID.startsWith("subnet-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#subnets:filter=${resourceID}`;
     return (newUrl);
   }
   // Route table
-  else if (text.startsWith("rtb-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#routetables:filter=${text}`;
+  else if (resourceID.startsWith("rtb-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#routetables:filter=${resourceID}`;
     return (newUrl);
   }
   // Network interface
-  else if (text.startsWith("eni-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#NIC:networkInterfaceId=${text};sort=networkInterfaceId`;
+  else if (resourceID.startsWith("eni-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#NIC:networkInterfaceId=${resourceID};sort=networkInterfaceId`;
     return (newUrl);
   }
   // Volume
-  else if (text.startsWith("vol-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Volumes:volumeId=${text};sort=desc:createTime`;
+  else if (resourceID.startsWith("vol-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Volumes:volumeId=${resourceID};sort=desc:createTime`;
     return (newUrl);
   }
   // Key pair
-  else if (text.startsWith("key-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#KeyPairs:key-pair-id=${text}`;
+  else if (resourceID.startsWith("key-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#KeyPairs:key-pair-id=${resourceID}`;
     return (newUrl);
   }
   // AMI
-  else if (text.startsWith("ami-") == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Images:visibility=owned-by-me;imageId=${text};sort=name`;
+  else if (resourceID.startsWith("ami-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Images:visibility=owned-by-me;imageId=${resourceID};sort=name`;
     return (newUrl);
   }
   // Virtual private gateway
-  else if (text.startsWith('vgw-') == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#VpnGateways:search=${text};sort=VpnGatewayId`;
+  else if (resourceID.startsWith('vgw-') == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#VpnGateways:search=${resourceID};sort=VpnGatewayId`;
     return (newUrl);
   }
   // EC2 snapshot
-  else if (text.startsWith('snap-') == true) {
-    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Snapshots:visibility=owned-by-me;snapshotId=${text};sort=snapshotId`;
+  else if (resourceID.startsWith('snap-') == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Snapshots:visibility=owned-by-me;snapshotId=${resourceID};sort=snapshotId`;
     return (newUrl);
   }
   else {
-    unsupportedResourceAlert(text);
+    unsupportedResourceAlert(resourceID);
   }
 }
 

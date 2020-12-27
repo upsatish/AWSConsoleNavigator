@@ -1,34 +1,32 @@
 # AWS Console Navigator
 
 AWS Console Navigator Chrome extension. Navigate to AWS resources in the console from the Omnibox.
-To use, type 'awss' space an AWS resource ID, ARN or service:resourceID (ARN substring) into the Omnibox.
+To use, type keyword 'awss' space an ARN, AWS resource ID or service:resourceID (ARN substring) into the Omnibox.
 
 Click the AWS Console Navigator extension icon to select the AWS region.
 
-Sign in to an AWS account to access the AWS management console.
+Sign in to an AWS account is required to access the AWS management console.
 
 ## Supported resources
 
 ### Navigate by resource ID or ARN or service:resourceID (ARN substring)
 
-Resources that can be navigated by resource ID or ARN.
+Resources that can be navigated by resource ID or ARN or service:resourceID (ARN substring).
 
-| Resource type           | Resource ID starts with |
-| ----------------------- | ----------------------- |
-| VPC                     | vpc-                    |
-| EC2 instance            | i-                      |
-| Security group          | sg-                     |
-| Transit gateway         | tgw-                    |
-| DHCP option             | dopt-                   |
-| Internet gateway        | igw-                    |
-| Network ACL             | nacl-                   |
-| Subnet                  | subnet-                 |
-| Route table             | rtb-                    |
-| Network interface       | eni-                    |
-| Volume                  | vol-                    |
-| Key pair                | key-                    |
-| AMI                     | ami-                    |
-| Virtual private gateway | vgw-                    |
+- VPC
+- EC2 instance
+- Security group
+- Transit gateway
+- DHCP option
+- Internet gateway
+- Network ACL
+- Subnet
+- Route table
+- Network interface
+- Volume
+- Key pair
+- AMI
+- Virtual private gateway
 
 ### Navigate by ARN or service:resourceID (ARN substring) only
 
@@ -48,12 +46,14 @@ The following resources can be navigated by ARN or service:resourceID (ARN subst
 - SQS queue
 - SNS topic
 - State machine state
+- RDS cluster can be navigated by ARN only
 
 #### service:resourceID (ARN substring) example
 
-| ARN                                                                            | service:resourceID (ARN substring)     |
-| ------------------------------------------------------------------------------ | -------------------------------------- |
-| arn:aws:ecs:ap-southeast-2:330362583003:cluster/prod-pay-service-stack-cluster | cluster/prod-pay-service-stack-cluster |
+| ARN                                                             | service:resourceID (ARN substring) |
+| --------------------------------------------------------------- | ---------------------------------- |
+| arn:aws:ecs:ap-southeast-2:333173657890:cluster/service-cluster | cluster/service-cluster            |
+| arn:aws:dynamodb:us-east-1:206936434116:table/transaction       | table/transaction                  |
 
 ## Unsupported resources
 
@@ -63,12 +63,10 @@ These resources could not be supported.
 - DB security group
 - KMS key
 - Config rule
-- SNS topic
 
 ## TODO
 
 - [ ] Add CONTRIBUTING.MD
-- [ ] Add more supported resources
 - [ ] Add unit test for getNewURL functions
 - [ ] Currently developed and tested on Google Chrome - port and test to Firefox
 - [ ] Search for all TODOs in the project and complete
@@ -81,5 +79,6 @@ These resources could not be supported.
 - [ ] Add automated tests to build pipeline
 - [ ] Add international language support / translation
 - [ ] Fix VSCode snippets
-- [ ] Fix RDS cluster ARN substring map 
+- [ ] Fix RDS cluster ARN substring map
 - [ ] Add EC2 snapshot ARN navigation
+- [ ] Add more supported resources
