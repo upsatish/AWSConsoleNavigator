@@ -36,7 +36,6 @@ For new features, please include a detailed description with details of the serv
 Create a pull request to fix bugs or new features. For pull requests:
 
 - Create an issue with details of the bug or new feature
-- Branch from develop for features
 - Branch from main for issues, bugs or fixes
 - Include testing steps and expected results
 - Update README if required
