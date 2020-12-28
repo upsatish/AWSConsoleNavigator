@@ -1,6 +1,6 @@
 # AWS Console Navigator
 
-AWS Console Navigator Chrome extension. Navigate to AWS resources in the console from the Omnibox.
+AWS Console Navigator Chrome extension. Navigate to resources in the AWS console from the Omnibox.
 To use, type keyword 'awss' space an ARN, AWS resource ID or service:resourceID (ARN substring) into the Omnibox.
 
 Sign in to an AWS account is required to access the AWS management console.
@@ -51,10 +51,13 @@ Resources that can be navigated by ARN or service:resourceID (ARN substring) onl
 - ECS cluster
 - ECS task definition
 - RDS DB
+- State machine state
+
+### Navigate by ARN only
+
 - SQS queue
 - SNS topic
-- State machine state
-- RDS cluster can be navigated by ARN only
+- RDS cluster
 
 #### service:resourceID (ARN substring) format examples
 
