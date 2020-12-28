@@ -11,7 +11,19 @@ Sign in to an AWS account is required to access the AWS management console.
 
 ![Image of an AWS resource in the console](img/AWSConsoleNavigated.png "Image of an AWS resource in the console")
 
-Click the AWS Console Navigator extension icon to select the AWS region for navigation by resource ID. The selected region is displayed as an Omnibox suggestion.
+## Navigation examples
+
+- awss vpc-5a03f891
+- awss i-791d1788
+- awss arn:aws:ecs:ap-southeast-2:333173657890:cluster/service-cluster
+- awss cluster/service-cluster
+- awss stack/service-cluster-stack
+- awss arn:aws:dynamodb:us-east-1:206936434116:table/transaction
+- awss table/transaction
+
+## Region selection for navigation by resource ID and service:resourceID (ARN substring)
+
+Click the AWS Console Navigator extension icon to select the AWS region for navigation by resource ID and service:resourceID (ARN substring). The selected region is highlighted in the popup and displayed as an Omnibox suggestion. Region selection is not required for navigation by ARN.
 
 ![Image of AWS Console Navigator region selection popup](img/SelectRegionPopup.png "Image of AWS Console Navigator region selection popup")
 
