@@ -1,10 +1,6 @@
 # Contributing
 
-This guide details how to contribute to AWS Console Navigator.
-
-## License
-
-GNU GPLv3 License, see [LICENSE](LICENSE).
+This doc details how to contribute to AWS Console Navigator.
 
 ## Thank you for contributing
 

@@ -1,9 +1,9 @@
 # AWS Console Navigator
 
+![AWS Console Navigator img](img/Region_dark-bg@4x.png "AWS Console Navigator img")
+
 AWS Console Navigator Chrome extension. Navigate to resources in the AWS console from the Omnibox.
 To use, type keyword 'awss' space an ARN, AWS resource ID or service:resourceID (ARN substring) into the Omnibox.
-
-Sign in to an AWS account is required to access the AWS management console.
 
 ![Image of user typing awss keyword and ARN into the Omnibox](img/awssKeywordOmnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
 
@@ -13,6 +13,8 @@ Sign in to an AWS account is required to access the AWS management console.
 
 ## Navigation examples
 
+Sign in to an AWS account is required to access the AWS management console. AWS Console Navigator cannot switch accounts. Some example keywords of AWS console navigation:
+
 - awss vpc-5a03f891
 - awss i-791d1788
 - awss arn:aws:ecs:ap-southeast-2:333173657890:cluster/service-cluster
@@ -21,7 +23,7 @@ Sign in to an AWS account is required to access the AWS management console.
 - awss arn:aws:dynamodb:us-east-1:206936434116:table/transaction
 - awss table/transaction
 
-## Region selection for navigation by resource ID and service:resourceID (ARN substring)
+## Region selection
 
 Click the AWS Console Navigator extension icon to select the AWS region for navigation by resource ID and service:resourceID (ARN substring). The selected region is highlighted in the popup and displayed as an Omnibox suggestion. Region selection is not required for navigation by ARN.
 
@@ -92,3 +94,7 @@ These resources could not be supported:
 ## Contributing
 
 See [CONTRIBUTING.MD](CONTRIBUTING.MD).
+
+## License
+
+GNU GPLv3 License, see [LICENSE](LICENSE).
