@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build project
-        run: zip AWSConsoleNavigator.zip img/Region_dark-bg\@4x.png background.js CONTRIBUTING.md LICENSE manifest.json popup.css popup.html popup.js README.md
+        run: zip AWSConsoleNavigator-${{ env.version }}.zip img/Region_dark-bg\@4x.png background.js CONTRIBUTING.md LICENSE manifest.json popup.css popup.html popup.js README.md
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
