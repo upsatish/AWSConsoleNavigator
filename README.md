@@ -97,7 +97,7 @@ These resources could not be supported:
 
 ## Contributing
 
-See [CONTRIBUTING.MD](CONTRIBUTING.MD).
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
