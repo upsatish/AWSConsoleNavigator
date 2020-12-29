@@ -2,7 +2,7 @@
 
 ![AWS Console Navigator img](img/Region_dark-bg@4x.png "AWS Console Navigator img")
 
-AWS Console Navigator Chrome extension. Navigate to resources in the AWS console from the Omnibox.
+[AWS Console Navigator Chrome extension](https://chrome.google.com/webstore/detail/enlgbafmiepkajfipklgilnljlfbdkbo). Navigate to resources in the AWS console from the Omnibox.
 To use, type keyword 'awss' space an ARN, AWS resource ID or service:resourceID (ARN substring) into the Omnibox.
 
 ![Image of user typing awss keyword and ARN into the Omnibox](img/awssKeywordOmnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
@@ -10,6 +10,10 @@ To use, type keyword 'awss' space an ARN, AWS resource ID or service:resourceID 
 ![Image of the AWS Console Navigator extension](img/AWSConsoleNavigatorExtension.png "Image of the AWS Console Navigator extension")
 
 ![Image of an AWS resource in the console](img/AWSConsoleNavigated.png "Image of an AWS resource in the console")
+
+## Add to Chrome
+
+Add the [AWS Console Navigator Chrome extension](https://chrome.google.com/webstore/detail/enlgbafmiepkajfipklgilnljlfbdkbo) from the [Chrome Web Store](https://chrome.google.com/webstore).
 
 ## Navigation examples
 
