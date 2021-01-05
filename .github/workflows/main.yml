@@ -1,6 +1,6 @@
 name: Upload Release Asset
 env:
-  version: 'v1.0.0'
+  version: 'v1.0.1'
 on:
   push:
     branches:
@@ -23,7 +23,7 @@ jobs:
           tag_name: ${{ env.version }}
           release_name: ${{ env.version }}
           body: |
-            Initial Release
+            Added support for IAM resources
           draft: false
           prerelease: false
       - name: Upload Release Asset

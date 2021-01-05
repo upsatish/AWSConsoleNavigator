@@ -70,12 +70,18 @@ Resources that can be navigated by ARN or service:resourceID (ARN substring) onl
 - ECS task definition
 - RDS DB
 - State machine state
+- IAM user
+- IAM group
+- IAM role
+- IAM policy
 
 ### Navigate by ARN only
 
 - SQS queue
 - SNS topic
 - RDS cluster
+- AWS service role IAM policy
+- AWS service role IAM role
 
 #### service:resourceID (ARN substring) format examples
 

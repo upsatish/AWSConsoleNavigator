@@ -247,6 +247,40 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
     var newUrl = `https://${region}.console.aws.amazon.com/states/home?region=${region}#/statemachines/view/arn:aws:states:${region}:${accountID}:stateMachine:${resourceID}`;
     return (newUrl);
   }
+  // IAM user
+  else if (service == 'iam' && resourceType == 'user') {
+    var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/users/${resourceID}`;
+    return (newUrl);
+  }
+  // IAM group
+  else if (service == 'iam' && resourceType == 'group') {
+    var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/groups/${resourceID}`;
+    return (newUrl);
+  }
+  // IAM role
+  else if (service == 'iam' && resourceType == 'role') {
+    if (resourceID == 'aws-service-role') {
+      var additionalSections = additionalID.split("/");
+      var roleName = additionalSections[1];
+      var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/roles/${roleName}`;
+      return (newUrl);
+    }
+    else {
+      var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/roles/${resourceID}`;
+      return (newUrl);
+    }
+  }
+  // IAM policy
+  else if (service == 'iam' && resourceType == 'policy') {
+    if (resourceID == 'aws-service-role') {
+      var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/policies/arn:aws:iam::${accountID}:policy/aws-service-role/${additionalID}$jsonEditor`;
+      return (newUrl);
+    }
+    else {
+      var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/policies/arn:aws:iam::${accountID}:policy/${resourceID}$jsonEditor`;
+      return (newUrl);
+    }
+  }
   else {
     unsupportedResourceAlert(resourceType);
   }
@@ -280,6 +314,10 @@ function getServiceFromResourceType(service) {
   map.set('cluster', 'rds');
   map.set('db', 'rds');
   map.set('stateMachine', 'states');
+  map.set('user', 'iam');
+  map.set('group', 'iam');
+  map.set('role', 'iam');
+  map.set('policy', 'iam');
   return map.get(service);
 }
 
@@ -311,7 +349,7 @@ chrome.omnibox.onInputEntered.addListener(
     if (text.startsWith("arn:") == true) {
       var sections = parseARN(text);
       var service = sections.service;
-      if (sections.region.length != 0)
+      if (typeof sections.region !== "undefined")
         region = sections.region;
       var accountID = sections.accountID;
       var resourceType = sections.resourceType;
@@ -365,6 +403,9 @@ function parseARN(arn) {
       resourceType = resourceSections[0];
       resourceID = resourceSections[1];
       additionalID = resourceSections[2];
+      for (var i = 3; i < resourceSections.length; i++) {
+        additionalID = additionalID + "/" + resourceSections[i];
+      }
       return { service: service, region: region, accountID: accountID, resourceType: resourceType, resourceID: resourceID, additionalID: additionalID };
     }
     else {
