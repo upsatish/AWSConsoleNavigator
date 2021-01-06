@@ -59,19 +59,17 @@ To add a new resource type:
 
 ## TODO
 
-- [ ] Add unit test for getNewURL functions
-- [ ] Move build pipeline to GitHub actions
+- [ ] Add unit tests for functions
 - [ ] Currently developed and tested on Google Chrome - port and test to Firefox
 - [ ] Search for all TODOs in the project and code and complete
 - [ ] For an unsupported resource, navigate to contributing page if new tab, do not do for existing tab
 - [ ] Update README Navigate by ARN section to a table with service and resource type
 - [ ] Run ESLint on source code
-- [ ] Add images to README
 - [ ] Add JSDoc
 - [ ] Organize code and docs by categories - compute, networks, storage, database, etc. Currently is arbitrary
 - [ ] Add automated tests to build pipeline
 - [ ] Add international language support / translation
 - [ ] Fix VSCode snippets
 - [ ] Fix RDS cluster ARN substring map
-- [ ] Any fix for EC2 snapshot ARN navigation? Currently defaults to snapshots "Owned by me"
+- [ ] Any fix for EC2 snapshot ARN navigation? Currently defaults to snapshots "Owned by me", can't view public
 - [ ] Add more supported resources
