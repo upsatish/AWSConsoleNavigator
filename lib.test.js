@@ -36,5 +36,5 @@ test('Test getServiceFromResourceType returns correct resource type for service'
 });
 
 test('Test parseARN parses ARNs correctly', () => {
-  expect(parseARN('arn:aws:ec2:ap-southeast-2:469186273004:cluster/service-cluster')).toStrictEqual({ service: 'ecs', region: 'ap-southeast-2', accountID: '469186273004', resourceType: 'cluster', resourceID: 'service-cluster', additionalID: undefined });
+  expect(parseARN('arn:aws:ecs:ap-southeast-2:469186273004:cluster/service-cluster')).toStrictEqual({ service: 'ecs', region: 'ap-southeast-2', accountID: '469186273004', resourceType: 'cluster', resourceID: 'service-cluster', additionalID: undefined });
 });
