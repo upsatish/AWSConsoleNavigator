@@ -40,6 +40,10 @@ Create a pull request to fix bugs or new features. For pull requests:
 - Include testing steps and expected results
 - Update README if required
 
+## Releases
+
+The project is using GitHub actions to create releases. The project is using semantic versioning. The version numbers need to be updated in manifest.json and .github/workflows/main.yml for releases.
+
 ## Adding a new resource type
 
 To add a new resource type:
