@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/upsatish/AWSConsoleNavigator.git"
   },
-  "license": "GPLv3",
+  "license": "GPL-3.0-only",
   "bugs": {
     "url": "https://github.com/upsatish/AWSConsoleNavigator/issues"
   },
