@@ -42,7 +42,7 @@ Create a pull request to fix bugs or new features. For pull requests:
 
 ## Releases
 
-The project is using GitHub actions to create releases. The project is using semantic versioning. The version numbers need to be updated in manifest.json and .github/workflows/main.yml for releases.
+The project is using GitHub actions to create releases. The project is using semantic versioning. The version numbers need to be updated in manifest.json, .github/workflows/main.yml and package.json for releases.
 
 ## Adding a new resource type
 
