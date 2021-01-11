@@ -20,7 +20,7 @@ Add the [AWS Console Navigator Chrome extension](https://chrome.google.com/webst
 Sign in to an AWS account is required to access the AWS management console. AWS Console Navigator cannot switch accounts. Some example keywords of AWS console navigation:
 
 - awss vpc-5a03f891
-- awss i-791d1788
+- awss i-478eb362bbbcfc439f
 - awss arn:aws:ecs:ap-southeast-2:333173657890:cluster/service-cluster
 - awss cluster/service-cluster
 - awss stack/service-cluster-stack

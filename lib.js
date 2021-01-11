@@ -13,7 +13,16 @@ function parseARN(arn) {
   if (sections.length >= 7) {
     resourceType = sections[5];
     resourceID = sections[6];
-    return { service: service, region: region, accountID: accountID, resourceType: resourceType, resourceID: resourceID };
+    var resourceTypeSections = resourceType.split("/");
+    if (resourceTypeSections.length >= 2) {
+      additionalID = sections[6];
+      resourceType = resourceTypeSections[0];
+      resourceID = resourceTypeSections[1];
+      return { service: service, region: region, accountID: accountID, resourceType: resourceType, resourceID: resourceID, additionalID: additionalID };
+    }
+    else {
+      return { service: service, region: region, accountID: accountID, resourceType: resourceType, resourceID: resourceID };
+    }
   }
   else if (sections.length == 6) {
     var resource = sections[5];
@@ -336,7 +345,11 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
   // IAM policy
   else if (service == 'iam' && resourceType == 'policy') {
     if (resourceID == 'aws-service-role') {
-      var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/policies/arn:aws:iam::${accountID}:policy/aws-service-role/${additionalID}$jsonEditor`;
+      var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/policies/arn:aws:iam::${accountID}:policy/${resourceID}/${additionalID}$jsonEditor`;
+      return (newUrl);
+    }
+    else if (resourceID == 'job-function') {
+      var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/policies/arn:aws:iam::${accountID}:policy/${resourceID}/${additionalID}$serviceLevelSummary`;
       return (newUrl);
     }
     else {
