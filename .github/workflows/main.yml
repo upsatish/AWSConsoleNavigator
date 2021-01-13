@@ -25,7 +25,7 @@ jobs:
           tag_name: ${{ env.version }}
           release_name: ${{ env.version }}
           body: |
-            Create common function library |
+            Create common function library
             Added unit tests
           draft: false
           prerelease: false
