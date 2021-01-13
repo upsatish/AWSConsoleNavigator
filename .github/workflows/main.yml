@@ -1,6 +1,6 @@
 name: Upload Release Asset
 env:
-  version: "v1.1.0"
+  version: "v2.0.0"
 on:
   push:
     branches:
