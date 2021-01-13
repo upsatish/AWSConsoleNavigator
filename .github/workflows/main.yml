@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Run tests
+        run: npm install && npm test
       - name: Build project
         run: zip AWSConsoleNavigator-${{ env.version }}.zip img/Region_dark-bg\@4x.png background.js CONTRIBUTING.md LICENSE manifest.json popup.css popup.html popup.js README.md
       - name: Create Release

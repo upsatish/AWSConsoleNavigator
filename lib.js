@@ -103,7 +103,7 @@ function getNewURLFromResourceID(resourceID, region) {
     var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#TransitGateways:transitGatewayId=${resourceID}`;
     return (newUrl);
   }
-  // DHCP option
+  // DHCP options sets
   else if (resourceID.startsWith("dopt-") == true) {
     var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#dhcpOptions:filter=${resourceID}`;
     return (newUrl);
@@ -209,7 +209,7 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
     var newUrl = getNewURLFromResourceID(resourceID, region);
     return (newUrl);
   }
-  // DHCP options
+  // DHCP options sets
   else if (service == 'ec2' && resourceType == 'dhcp-options') {
     var newUrl = getNewURLFromResourceID(resourceID, region);
     return (newUrl);

@@ -43,7 +43,7 @@ Resources that can be navigated by resource ID or ARN or service:resourceID (ARN
 - EC2 instance
 - Security group
 - Transit gateway
-- DHCP option
+- DHCP options sets
 - Internet gateway
 - Network ACL
 - Subnet
