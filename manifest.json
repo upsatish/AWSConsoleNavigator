@@ -1,13 +1,11 @@
 {
-  "name": "AWS Console Navigator",
+  "name": "AWS Console Navigator dev",
   "description": "Navigate to resources in the AWS console from the Omnibox.",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "manifest_version": 2,
   "background": {
-    "scripts": [
-      "background.js"
-    ],
-    "persistent": false
+    "persistent": false,
+    "page": "background.html"
   },
   "omnibox": {
     "keyword": "awss"

@@ -40,13 +40,22 @@ Create a pull request to fix bugs or new features. For pull requests:
 - Include testing steps and expected results
 - Update README if required
 
+## Releases
+
+The project is using GitHub Actions workflows to create releases, using semantic versioning. The version numbers need to be updated in manifest.json, .github/workflows/main.yml and package.json for releases.
+
+## Tests
+
+The project is using GitHub Actions workflows to run unit tests on lib.js using [Jest](https://jestjs.io/). Test are run automatically on every commit. Please use random numbers for account IDs and resource IDs.
+
 ## Adding a new resource type
 
 To add a new resource type:
 
-- Create a new issue for the unsupported resource type with details of the service, resource type, console URL, ARN and any other detail.
-- Update README for supported resources
-- Add a comment for the service and resource type, example // Cloudformation stack
+- Create a new GitHub issue for the unsupported resource type with details of the service, resource type, console URL, ARN and any other detail. Add the labels "enhancement".
+- Update README.md for supported resources
+- Add tests to lib.test.js
+- In lib.js, add a comment for the service and resource type, example // Cloudformation stack
 - Add a new else if block to the getNewURLFromResourceType() function with the service and resourceType from the ARN
 - Return the URL to the console URL for that resource
 - Substitute the region with the ${region} tag
@@ -54,12 +63,11 @@ To add a new resource type:
 - Add a new else if block to the getNewURLFromResourceID() function if required
 - Do the necessary region and resourceID substitutions as above
 - Add a map set to the getServiceFromResourceType() function for the service:resourceID (ARN substring) navigation
-- Test navigation by ARN, resourceID and ARN substring
-- Create and submit pull request referencing issue
+- Test navigation by ARN, resourceID and ARN substring in browser
+- Create and submit pull request referencing issue #
 
 ## TODO
 
-- [ ] Add unit tests for functions
 - [ ] Currently developed and tested on Google Chrome - port and test to Firefox
 - [ ] Search for all TODOs in the project and code and complete
 - [ ] For an unsupported resource, navigate to contributing page if new tab, do not do for existing tab
@@ -67,9 +75,9 @@ To add a new resource type:
 - [ ] Run ESLint on source code
 - [ ] Add JSDoc
 - [ ] Organize code and docs by categories - compute, networks, storage, database, etc. Currently is arbitrary
-- [ ] Add automated tests to build pipeline
 - [ ] Add international language support / translation
 - [ ] Fix VSCode snippets
 - [ ] Fix RDS cluster ARN substring map
 - [ ] Any fix for EC2 snapshot ARN navigation? Currently defaults to snapshots "Owned by me", can't view public
 - [ ] Add more supported resources
+- [ ] Add automated tests of extension - puppeteer, selenium?
