@@ -50,7 +50,7 @@ chrome.omnibox.onInputEntered.addListener(
       var newURL = getNewURLFromResourceType(service, region, accountID, resourceType, resourceID, additionalID);
       navigate(newURL);
     }
-    // Navigate by resource type with resourceType:resourceID (ARN substring)
+    // Navigate by resource type with resourceType:resourceID or resourceType/resourceID (ARN substring)
     else if ((text.includes(":") == true) || (text.includes("/") == true)) {
       var sections;
       if (text.includes(":"))

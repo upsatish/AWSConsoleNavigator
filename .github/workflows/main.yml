@@ -15,7 +15,7 @@ jobs:
       - name: Run tests
         run: npm install && npm test
       - name: Build project
-        run: zip AWSConsoleNavigator-${{ env.version }}.zip img/Region_dark-bg\@4x.png background.js CONTRIBUTING.md LICENSE manifest.json popup.css popup.html popup.js README.md
+        run: zip AWSConsoleNavigator-${{ env.version }}.zip img/Region_dark-bg\@4x.png background.html background.js lib.js CONTRIBUTING.md LICENSE manifest.json popup.css popup.html popup.js README.md
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -25,7 +25,8 @@ jobs:
           tag_name: ${{ env.version }}
           release_name: ${{ env.version }}
           body: |
-            Added support for IAM resources
+            Create common function library |
+            Added unit tests
           draft: false
           prerelease: false
       - name: Upload Release Asset

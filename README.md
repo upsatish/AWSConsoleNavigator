@@ -3,7 +3,7 @@
 ![AWS Console Navigator img](img/Region_dark-bg@4x.png "AWS Console Navigator img")
 
 [AWS Console Navigator Chrome extension](https://chrome.google.com/webstore/detail/enlgbafmiepkajfipklgilnljlfbdkbo). Navigate to resources in the AWS console from the Omnibox.
-To use, type keyword 'awss' space an ARN, AWS resource ID or service:resourceID (ARN substring) into the Omnibox.
+To use, type keyword 'awss' space an ARN, AWS resource ID or resourceType:resourceID or resourceType/resourceID (ARN substring) into the Omnibox.
 
 ![Image of user typing awss keyword and ARN into the Omnibox](img/awssKeywordOmnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
 
@@ -29,15 +29,15 @@ Sign in to an AWS account is required to access the AWS management console. AWS 
 
 ## Region selection
 
-Click the AWS Console Navigator extension icon to select the AWS region for navigation by resource ID and service:resourceID (ARN substring). The selected region is highlighted in the popup and displayed as an Omnibox suggestion. Region selection is not required for navigation by ARN.
+Click the AWS Console Navigator extension icon to select the AWS region for navigation by resource ID and resourceType:resourceID or resourceType/resourceID (ARN substring). The selected region is highlighted in the popup and displayed as an Omnibox suggestion. Region selection is not required for navigation by ARN.
 
 ![Image of AWS Console Navigator region selection popup](img/SelectRegionPopup.png "Image of AWS Console Navigator region selection popup")
 
 ## Supported resources
 
-### Navigate by resource ID or ARN or service:resourceID (ARN substring)
+### Navigate by resource ID or ARN or resourceType:resourceID or resourceType/resourceID (ARN substring)
 
-Resources that can be navigated by resource ID or ARN or service:resourceID (ARN substring):
+Resources that can be navigated by resource ID or ARN or resourceType:resourceID or resourceType:resourceID(ARN substring):
 
 - VPC
 - EC2 instance
@@ -54,9 +54,9 @@ Resources that can be navigated by resource ID or ARN or service:resourceID (ARN
 - AMI
 - Virtual private gateway
 
-### Navigate by ARN or service:resourceID (ARN substring) only
+### Navigate by ARN or resourceType:resourceID or resourceType/resourceID (ARN substring) only
 
-Resources that can be navigated by ARN or service:resourceID (ARN substring) only:
+Resources that can be navigated by ARN or service:resourceID or resourceType:resourceID (ARN substring) only:
 
 - S3 bucket
 - Codebuild project
@@ -83,14 +83,14 @@ Resources that can be navigated by ARN or service:resourceID (ARN substring) onl
 - AWS service role IAM policy
 - AWS service role IAM role
 
-#### service:resourceID (ARN substring) format examples
+#### resourceType:resourceID or resourceType/resourceID (ARN substring) format examples
 
 Examples of the service:resourceID (ARN substring) format:
 
-| ARN                                                             | service:resourceID (ARN substring) |
-| --------------------------------------------------------------- | ---------------------------------- |
-| arn:aws:ecs:ap-southeast-2:333173657890:cluster/service-cluster | cluster/service-cluster            |
-| arn:aws:dynamodb:us-east-1:206936434116:table/transaction       | table/transaction                  |
+| ARN                                                             | resourceType:resourceID or resourceType/resourceID (ARN substring) |
+| --------------------------------------------------------------- | ------------------------------------------------------------------ |
+| arn:aws:ecs:ap-southeast-2:333173657890:cluster/service-cluster | cluster/service-cluster                                            |
+| arn:aws:dynamodb:us-east-1:206936434116:table/transaction       | table/transaction                                                  |
 
 ## Unsupported resources
 
