@@ -3,7 +3,11 @@
 ![AWS Console Navigator img](img/Region_dark-bg@4x.png "AWS Console Navigator img")
 
 [AWS Console Navigator Chrome extension](https://chrome.google.com/webstore/detail/enlgbafmiepkajfipklgilnljlfbdkbo). Navigate to resources in the AWS console from the Omnibox.
-To use, type keyword 'awss' space an ARN, AWS resource ID or resourceType:resourceID or resourceType/resourceID (ARN substring) into the Omnibox.
+To use, type keyword 'awss' space one of the following terms into the Omnibox:
+* ARN
+* AWS resource ID
+* resourceType:resourceID (ARN substring)
+* resourceType/resourceID (ARN substring)
 
 ![Image of user typing awss keyword and ARN into the Omnibox](img/awssKeywordOmnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
 
