@@ -65,7 +65,21 @@ test('Test parseARN parses ARNs correctly', () => {
   expect(parseARN('arn:aws:cloudformation:us-east-2:681873453507:stack/mystack-mynestedstack-sggfrhxhum7w/f449b250-b969-11e0-a185-5081d0136786')).toEqual({ service: 'cloudformation', region: 'us-east-2', accountID: '681873453507', resourceType: 'stack', resourceID: 'mystack-mynestedstack-sggfrhxhum7w', additionalID: 'f449b250-b969-11e0-a185-5081d0136786' });
   expect(parseARN('arn:aws:secretsmanager:us-east-1:817153889774:secret:mysecret-eb6d01')).toEqual({ service: 'secretsmanager', region: 'us-east-1', accountID: '817153889774', resourceType: 'secret', resourceID: 'mysecret-eb6d01', additionalID: undefined });
   expect(parseARN('arn:aws:ecs:us-west-2:824794197207:task-definition/sample-fargate:2')).toEqual({ service: 'ecs', region: 'us-west-2', accountID: '824794197207', resourceType: 'task-definition', resourceID: 'sample-fargate', additionalID: '2' });
-  expect(parseARN('arn:aws:ecs:us-west-2:569245959815:task-definition/sample-fargate')).toEqual({ service: 'ecs', region: 'us-west-2', accountID: '569245959815', resourceType: 'task-definition', resourceID: 'sample-fargate' });
+  expect(parseARN('arn:aws:ecs:us-west-1:569245959815:task-definition/sample-fargate')).toEqual({ service: 'ecs', region: 'us-west-1', accountID: '569245959815', resourceType: 'task-definition', resourceID: 'sample-fargate' });
   expect(parseARN('arn:aws:iam::aws:policy/job-function/ViewOnlyAccess')).toEqual({ service: 'iam', region: undefined, accountID: 'aws', resourceType: 'policy', resourceID: 'job-function', additionalID: 'ViewOnlyAccess' });
   expect(parseARN('arn:aws:iam::aws:policy/aws-service-role/AccessAnalyzerServiceRolePolicy')).toEqual({ service: 'iam', region: undefined, accountID: 'aws', resourceType: 'policy', resourceID: 'aws-service-role', additionalID: 'AccessAnalyzerServiceRolePolicy' });
+  expect(parseARN('arn:aws:ec2:ap-southeast-2:280837728446:transitgateway-route-table/tgw-rtb-0139ea58e6598c8f0c')).toEqual({ service: 'ec2', region: 'ap-southeast-2', accountID: '280837728446', resourceType: 'transitgateway-route-table', resourceID: 'tgw-rtb-0139ea58e6598c8f0c', additionalID: undefined });
+  expect(parseARN('arn:aws:ec2:ap-southeast-2:184965439876:transit-gatewayattachment/tgw-attach-515b0ec6d25f0b6151')).toEqual({ service: 'ec2', region: 'ap-southeast-2', accountID: '184965439876', resourceType: 'transit-gatewayattachment', resourceID: 'tgw-attach-515b0ec6d25f0b6151', additionalID: undefined });
+  expect(parseARN('arn:aws:codecommit:ap-southeast-2:426730285057:setup')).toEqual({ service: 'codecommit', region: 'ap-southeast-2', accountID: '426730285057', resourceType: undefined, resourceID: 'setup', additionalID: undefined });
+});
+
+test('Test getNewURLFromResourceID returns correct URL', () => {
+  expect(getNewURLFromResourceID('tgw-attach-39cef96504dbdc969c', 'ap-southeast-2')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#TransitGatewayAttachments:transitGatewayAttachmentId=tgw-attach-39cef96504dbdc969c;sort=transitGatewayAttachmentId');
+  expect(getNewURLFromResourceID('tgw-rtb-131fc21c22f0fdd6e3', 'ap-southeast-2')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#TransitGatewayRouteTables:transitGatewayRouteTableId=tgw-rtb-131fc21c22f0fdd6e3;sort=transitGatewayRouteTableId');
+});
+
+test('Test getNewURLFromResourceType returns correct URL', () => {
+  expect(getNewURLFromResourceType('ec2', 'ap-southeast-2', '868903843376', 'transit-gatewayattachment', 'tgw-attach-39cef96504dbdc969c', undefined)).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#TransitGatewayAttachments:transitGatewayAttachmentId=tgw-attach-39cef96504dbdc969c;sort=transitGatewayAttachmentId');
+  expect(getNewURLFromResourceType('ec2', 'ap-southeast-2', '238527645814', 'transitgateway-route-table', 'tgw-rtb-131fc21c22f0fdd6e3', undefined)).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#TransitGatewayRouteTables:transitGatewayRouteTableId=tgw-rtb-131fc21c22f0fdd6e3;sort=transitGatewayRouteTableId');
+  expect(getNewURLFromResourceType('codecommit', 'ap-southeast-2', '426730285057', undefined, 'setup', undefined)).toBe('https://ap-southeast-2.console.aws.amazon.com/codesuite/codecommit/repositories/setup/browse?region=ap-southeast-2');
 });

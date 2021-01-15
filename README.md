@@ -2,12 +2,13 @@
 
 ![AWS Console Navigator img](img/Region_dark-bg@4x.png "AWS Console Navigator img")
 
-[AWS Console Navigator Chrome extension](https://chrome.google.com/webstore/detail/enlgbafmiepkajfipklgilnljlfbdkbo). Navigate to resources in the AWS console from the Omnibox.
+[AWS Console Navigator Chrome extension](https://chrome.google.com/webstore/detail/enlgbafmiepkajfipklgilnljlfbdkbo). Go to resources in the AWS console from the Omnibox.
 To use, type keyword 'awss' space one of the following terms into the Omnibox:
-* ARN
-* AWS resource ID
-* resourceType:resourceID (ARN substring)
-* resourceType/resourceID (ARN substring)
+
+- ARN
+- AWS resource ID
+- resourceType:resourceID (ARN substring)
+- resourceType/resourceID (ARN substring)
 
 ![Image of user typing awss keyword and ARN into the Omnibox](img/awssKeywordOmnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
 
@@ -57,6 +58,8 @@ Resources that can be navigated by resource ID or ARN or resourceType:resourceID
 - Key pair
 - AMI
 - Virtual private gateway
+- Transit gateway attachment
+- Transit gateway route table
 
 ### Navigate by ARN or resourceType:resourceID or resourceType/resourceID (ARN substring) only
 
@@ -86,6 +89,7 @@ Resources that can be navigated by ARN or service:resourceID or resourceType:res
 - RDS cluster
 - AWS service role IAM policy
 - AWS service role IAM role
+- CodeCommit repository
 
 #### resourceType:resourceID or resourceType/resourceID (ARN substring) format examples
 
@@ -100,7 +104,6 @@ Examples of the service:resourceID (ARN substring) format:
 
 These resources could not be supported:
 
-- Transit gateway attachment (tgw-attach-)
 - DB security group
 - KMS key
 - Config rule

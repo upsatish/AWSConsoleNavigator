@@ -8,7 +8,7 @@ Welcome! Thank you for contributing to AWS Console Navigator. There are several 
 
 - Test and submit issues, bug reports or feature requests
 - Improve documentation
-- There are many AWS resource types that haven't been implemented yet. Please submit a feature request and help test.
+- There are many AWS resource types that haven't been implemented yet. Please submit a feature request and help implement and / or test.
 - Submit a pull request to fix bugs or implement feature requests
 - Help translate AWS Console Navigator to other languages
 - Share AWS Console Navigator with friends

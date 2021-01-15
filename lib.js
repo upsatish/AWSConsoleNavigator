@@ -98,6 +98,16 @@ function getNewURLFromResourceID(resourceID, region) {
     var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#SecurityGroup:groupId=${resourceID}`;
     return (newUrl);
   }
+  // Transit gateway attachment
+  else if (resourceID.startsWith("tgw-attach-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#TransitGatewayAttachments:transitGatewayAttachmentId=${resourceID};sort=transitGatewayAttachmentId`;
+    return (newUrl);
+  }
+  // Transit gateway route table
+  else if (resourceID.startsWith("tgw-rtb-") == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#TransitGatewayRouteTables:transitGatewayRouteTableId=${resourceID};sort=transitGatewayRouteTableId`;
+    return (newUrl);
+  }
   // Transit gateway
   else if (resourceID.startsWith("tgw-") == true) {
     var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#TransitGateways:transitGatewayId=${resourceID}`;
@@ -201,6 +211,16 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
   }
   // Security group
   else if (service == 'ec2' && resourceType == 'security-group') {
+    var newUrl = getNewURLFromResourceID(resourceID, region);
+    return (newUrl);
+  }
+  // Transit gateway attachment
+  else if (service == 'ec2' && resourceType == 'transit-gatewayattachment') {
+    var newUrl = getNewURLFromResourceID(resourceID, region);
+    return (newUrl);
+  }
+  // Transit gateway route table
+  else if (service == 'ec2' && resourceType == 'transitgateway-route-table') {
     var newUrl = getNewURLFromResourceID(resourceID, region);
     return (newUrl);
   }
@@ -356,6 +376,11 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
       var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/policies/arn:aws:iam::${accountID}:policy/${resourceID}$jsonEditor`;
       return (newUrl);
     }
+  }
+  // CodeCommit repository
+  else if (service == 'codecommit') {
+    var newUrl = `https://${region}.console.aws.amazon.com/codesuite/codecommit/repositories/${resourceID}/browse?region=${region}`;
+    return (newUrl);
   }
   else {
     unsupportedResourceAlert(resourceType);

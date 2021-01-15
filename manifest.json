@@ -1,7 +1,7 @@
 {
   "name": "AWS Console Navigator",
-  "description": "Navigate to resources in the AWS console from the Omnibox.",
-  "version": "2.0.0",
+  "description": "Go to resources in the AWS console from the Omnibox.",
+  "version": "2.0.1",
   "manifest_version": 2,
   "background": {
     "persistent": false,

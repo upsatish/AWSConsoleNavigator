@@ -1,6 +1,6 @@
 name: Upload Release Asset
 env:
-  version: "v2.0.0"
+  version: "v2.0.1"
 on:
   push:
     branches:
@@ -25,8 +25,8 @@ jobs:
           tag_name: ${{ env.version }}
           release_name: ${{ env.version }}
           body: |
-            Create common function library
-            Added unit tests
+            Added support for tgw-attach and tgw-rtb
+            Added CodeCommit repository support
           draft: false
           prerelease: false
       - name: Upload Release Asset
