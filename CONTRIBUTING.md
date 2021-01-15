@@ -42,11 +42,11 @@ Create a pull request to fix bugs or new features. For pull requests:
 
 ## Releases
 
-The project is using GitHub Actions workflows to create releases, using semantic versioning. The version numbers need to be updated in manifest.json, .github/workflows/main.yml and package.json for releases.
+The project is using GitHub Actions workflows to create releases, using semantic versioning. The version numbers are updated in manifest.json, .github/workflows/main.yml and package.json for releases. The release notes are updated in .github/workflows/main.yml.
 
 ## Tests
 
-The project is using GitHub Actions workflows to run unit tests on lib.js using [Jest](https://jestjs.io/). Test are run automatically on every commit. Please use random numbers for account IDs and resource IDs.
+The project is using GitHub Actions workflows to run unit tests on lib.js using [Jest](https://jestjs.io/). Test are run automatically on every commit. Please use random 12-digit numbers for account IDs and 8-digit or 18-digit hex in lowercase for resource IDs.
 
 ## Adding a new resource type
 
@@ -68,7 +68,6 @@ To add a new resource type:
 
 ## TODO
 
-- [ ] Currently developed and tested on Google Chrome - port and test to Firefox
 - [ ] Search for all TODOs in the project and code and complete
 - [ ] For an unsupported resource, navigate to contributing page if new tab, do not do for existing tab
 - [ ] Update README Navigate by ARN section to a table with service and resource type
