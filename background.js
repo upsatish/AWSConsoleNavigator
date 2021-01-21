@@ -14,11 +14,11 @@ function setRegion(regionText) {
 
 
 chrome.runtime.onInstalled.addListener(function () {
-  chrome.storage.sync.set({ region: 'us-east-1' });
+  chrome.storage.local.set({ region: 'us-east-1' });
 });
 
 chrome.omnibox.onInputStarted.addListener(function () {
-  chrome.storage.sync.get('region', function (data) { setRegion(data.region) });
+  chrome.storage.local.get('region', function (data) { setRegion(data.region) });
 });
 
 chrome.omnibox.onInputChanged.addListener(
