@@ -1,7 +1,7 @@
 {
   "name": "AWS Console Navigator",
   "description": "Go to resources in the AWS console from the Omnibox.",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "manifest_version": 2,
   "background": {
     "persistent": false,
@@ -19,10 +19,5 @@
   ],
   "icons": {
     "140": "img/Region_dark-bg@4x.png"
-  },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "{dce191bf-b1d3-4b3c-b388-d2c6f3769e45}"
-    }
   }
 }

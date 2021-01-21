@@ -351,11 +351,13 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
   }
   // IAM role
   else if (service == 'iam' && resourceType == 'role') {
-    if (resourceID == 'aws-service-role') {
+    if (typeof(additionalID) !== 'undefined') {
       var additionalSections = additionalID.split("/");
-      var roleName = additionalSections[1];
-      var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/roles/${roleName}`;
-      return (newUrl);
+      if (additionalSections.length >= 1) {
+        var roleName = additionalSections[additionalSections.length - 1];
+        var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/roles/${roleName}`;
+        return (newUrl);
+      }
     }
     else {
       var newUrl = `https://console.aws.amazon.com/iam/home?region=${region}#/roles/${resourceID}`;
