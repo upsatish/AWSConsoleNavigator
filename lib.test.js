@@ -71,6 +71,8 @@ test('Test parseARN parses ARNs correctly', () => {
   expect(parseARN('arn:aws:ec2:ap-southeast-2:280837728446:transitgateway-route-table/tgw-rtb-0139ea58e6598c8f0c')).toEqual({ service: 'ec2', region: 'ap-southeast-2', accountID: '280837728446', resourceType: 'transitgateway-route-table', resourceID: 'tgw-rtb-0139ea58e6598c8f0c', additionalID: undefined });
   expect(parseARN('arn:aws:ec2:ap-southeast-2:184965439876:transit-gatewayattachment/tgw-attach-515b0ec6d25f0b6151')).toEqual({ service: 'ec2', region: 'ap-southeast-2', accountID: '184965439876', resourceType: 'transit-gatewayattachment', resourceID: 'tgw-attach-515b0ec6d25f0b6151', additionalID: undefined });
   expect(parseARN('arn:aws:codecommit:ap-southeast-2:426730285057:setup')).toEqual({ service: 'codecommit', region: 'ap-southeast-2', accountID: '426730285057', resourceType: undefined, resourceID: 'setup', additionalID: undefined });
+  expect(parseARN('arn:aws:iam::432606950486:role/path/StartInstances')).toEqual({ service: 'iam', region: undefined, accountID: '432606950486', resourceType: 'role', resourceID: 'path', additionalID: 'StartInstances' });
+  expect(parseARN('arn:aws:iam::432606950486:role/path/to/StartInstances')).toEqual({ service: 'iam', region: undefined, accountID: '432606950486', resourceType: 'role', resourceID: 'path', additionalID: 'to/StartInstances' });
 });
 
 test('Test getNewURLFromResourceID returns correct URL', () => {
@@ -82,4 +84,10 @@ test('Test getNewURLFromResourceType returns correct URL', () => {
   expect(getNewURLFromResourceType('ec2', 'ap-southeast-2', '868903843376', 'transit-gatewayattachment', 'tgw-attach-39cef96504dbdc969c', undefined)).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#TransitGatewayAttachments:transitGatewayAttachmentId=tgw-attach-39cef96504dbdc969c;sort=transitGatewayAttachmentId');
   expect(getNewURLFromResourceType('ec2', 'ap-southeast-2', '238527645814', 'transitgateway-route-table', 'tgw-rtb-131fc21c22f0fdd6e3', undefined)).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#TransitGatewayRouteTables:transitGatewayRouteTableId=tgw-rtb-131fc21c22f0fdd6e3;sort=transitGatewayRouteTableId');
   expect(getNewURLFromResourceType('codecommit', 'ap-southeast-2', '426730285057', undefined, 'setup', undefined)).toBe('https://ap-southeast-2.console.aws.amazon.com/codesuite/codecommit/repositories/setup/browse?region=ap-southeast-2');
+  expect(getNewURLFromResourceType('iam', 'ap-southeast-2', '426730285057', 'role', 'path', 'to/StartInstances')).toBe('https://console.aws.amazon.com/iam/home?region=ap-southeast-2#/roles/StartInstances');
+  expect(getNewURLFromResourceType('iam', 'ap-southeast-2', '426730285057', 'role', 'path', 'StartInstances')).toBe('https://console.aws.amazon.com/iam/home?region=ap-southeast-2#/roles/StartInstances');
+  expect(getNewURLFromResourceType('iam', undefined, '996013154526', 'role', 'aws-service-role', 'cloud9.amazonaws.com/AWSServiceRoleForAWSCloud9')).toBe('https://console.aws.amazon.com/iam/home?region=undefined#/roles/AWSServiceRoleForAWSCloud9');
+  expect(getNewURLFromResourceType('iam', undefined, '432606950486', 'role', 'StartInstances')).toBe('https://console.aws.amazon.com/iam/home?region=undefined#/roles/StartInstances');
+  expect(getNewURLFromResourceType('iam', undefined, 'aws', 'policy', 'job-function', 'ViewOnlyAccess')).toBe('https://console.aws.amazon.com/iam/home?region=undefined#/policies/arn:aws:iam::aws:policy/job-function/ViewOnlyAccess$serviceLevelSummary');
+  expect(getNewURLFromResourceType('iam', undefined, 'aws', 'policy', 'aws-service-role', 'AccessAnalyzerServiceRolePolicy')).toBe('https://console.aws.amazon.com/iam/home?region=undefined#/policies/arn:aws:iam::aws:policy/aws-service-role/AccessAnalyzerServiceRolePolicy$jsonEditor');
 });

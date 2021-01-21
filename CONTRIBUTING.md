@@ -48,6 +48,12 @@ The project is using GitHub Actions workflows to create releases, using semantic
 
 The project is using GitHub Actions workflows to run unit tests on lib.js using [Jest](https://jestjs.io/). Test are run automatically on every commit. Please use random 12-digit numbers for account IDs and 8-digit or 18-digit hex in lowercase for resource IDs.
 
+### Testing locally
+
+Run
+
+    npm install && npm test
+
 ## Adding a new resource type
 
 To add a new resource type:
