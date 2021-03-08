@@ -33,6 +33,7 @@ test('Test getServiceFromResourceType returns correct service for resource type'
   expect(getServiceFromResourceType('group')).toBe('iam');
   expect(getServiceFromResourceType('role')).toBe('iam');
   expect(getServiceFromResourceType('policy')).toBe('iam');
+  expect(getServiceFromResourceType('task')).toBe('ecs');
 });
 
 test('Test parseARN parses ARNs correctly', () => {
@@ -73,6 +74,7 @@ test('Test parseARN parses ARNs correctly', () => {
   expect(parseARN('arn:aws:codecommit:ap-southeast-2:426730285057:setup')).toEqual({ service: 'codecommit', region: 'ap-southeast-2', accountID: '426730285057', resourceType: undefined, resourceID: 'setup', additionalID: undefined });
   expect(parseARN('arn:aws:iam::432606950486:role/path/StartInstances')).toEqual({ service: 'iam', region: undefined, accountID: '432606950486', resourceType: 'role', resourceID: 'path', additionalID: 'StartInstances' });
   expect(parseARN('arn:aws:iam::432606950486:role/path/to/StartInstances')).toEqual({ service: 'iam', region: undefined, accountID: '432606950486', resourceType: 'role', resourceID: 'path', additionalID: 'to/StartInstances' });
+  expect(parseARN('arn:aws:ecs:ap-southeast-1:266543935380:task/test-stack-cluster/b8a41f45f3626793dca5e1edf545c58c')).toEqual({ service: 'ecs', region: 'ap-southeast-1', accountID: '266543935380', resourceType: 'task', resourceID: 'test-stack-cluster', additionalID: 'b8a41f45f3626793dca5e1edf545c58c' });
 });
 
 test('Test getNewURLFromResourceID returns correct URL', () => {
@@ -90,4 +92,5 @@ test('Test getNewURLFromResourceType returns correct URL', () => {
   expect(getNewURLFromResourceType('iam', undefined, '432606950486', 'role', 'StartInstances')).toBe('https://console.aws.amazon.com/iam/home?region=undefined#/roles/StartInstances');
   expect(getNewURLFromResourceType('iam', undefined, 'aws', 'policy', 'job-function', 'ViewOnlyAccess')).toBe('https://console.aws.amazon.com/iam/home?region=undefined#/policies/arn:aws:iam::aws:policy/job-function/ViewOnlyAccess$serviceLevelSummary');
   expect(getNewURLFromResourceType('iam', undefined, 'aws', 'policy', 'aws-service-role', 'AccessAnalyzerServiceRolePolicy')).toBe('https://console.aws.amazon.com/iam/home?region=undefined#/policies/arn:aws:iam::aws:policy/aws-service-role/AccessAnalyzerServiceRolePolicy$jsonEditor');
+  expect(getNewURLFromResourceType('ecs', 'ap-southeast-1', '266543935380', 'task', 'test-stack-cluster', 'b8a41f45f3626793dca5e1edf545c58c')).toBe('https://ap-southeast-1.console.aws.amazon.com/ecs/home?region=ap-southeast-1#/clusters/test-stack-cluster/tasks/b8a41f45f3626793dca5e1edf545c58c/details');
 });

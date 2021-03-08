@@ -79,6 +79,7 @@ function getServiceFromResourceType(resourceType) {
   map.set('group', 'iam');
   map.set('role', 'iam');
   map.set('policy', 'iam');
+  map.set('task', 'ecs');
   return map.get(resourceType);
 }
 
@@ -313,6 +314,11 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
       var newUrl = `https://${region}.console.aws.amazon.com/ecs/home?region=${region}#/taskDefinitions/${resourceID}`;
       return (newUrl);
     }
+  }
+  // ECS task
+  else if (service == 'ecs' && resourceType == 'task') {
+    var newUrl = `https://${region}.console.aws.amazon.com/ecs/home?region=${region}#/clusters/${resourceID}/tasks/${additionalID}`;
+    return (newUrl);
   }
   // RDS cluster
   else if (service == 'rds' && resourceType == 'cluster') {
