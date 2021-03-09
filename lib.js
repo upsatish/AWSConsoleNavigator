@@ -80,6 +80,7 @@ function getServiceFromResourceType(resourceType) {
   map.set('role', 'iam');
   map.set('policy', 'iam');
   map.set('task', 'ecs');
+  map.set('vaults', 'glacier');
   return map.get(resourceType);
 }
 
@@ -388,6 +389,11 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
   // CodeCommit repository
   else if (service == 'codecommit') {
     var newUrl = `https://${region}.console.aws.amazon.com/codesuite/codecommit/repositories/${resourceID}/browse?region=${region}`;
+    return (newUrl);
+  }
+  // Glacier vault
+  else if (service == 'glacier' && resourceType == 'vault') {
+    var newUrl = `https://${region}.console.aws.amazon.com/glacier/home?region=${region}#/vaults`;
     return (newUrl);
   }
   else {
