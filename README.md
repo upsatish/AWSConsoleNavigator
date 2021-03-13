@@ -7,13 +7,15 @@ To use, type keyword 'awss' space one of the following terms into the Omnibox:
 
 - ARN
 - AWS resource ID
-- resourceType:resourceID (ARN substring)
-- resourceType/resourceID (ARN substring)
+- resourceType:resourceID (short ARN / ARN substring)
+- resourceType/resourceID (short ARN / ARN substring)
 
-![Image of user typing awss keyword and ARN into the Omnibox](img/awssKeywordOmnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
+![Image of user typing awss keyword and ARN into the Omnibox](img/awssARNKeywordOmnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
+![Image of the AWS Console Navigator extension](img/AWSARNConsoleNavigatorExtension.png "Image of the AWS Console Navigator extension")
+![Image of an AWS resource in the console](img/AWSConsoleNavigated.png "Image of an AWS resource in the console")
 
-![Image of the AWS Console Navigator extension](img/AWSConsoleNavigatorExtension.png "Image of the AWS Console Navigator extension")
-
+![Image of user typing awss keyword and ARN into the Omnibox](img/awssShortARNKeywordOmnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
+![Image of the AWS Console Navigator extension](img/AWSShortARNConsoleNavigatorExtension.png "Image of the AWS Console Navigator extension")
 ![Image of an AWS resource in the console](img/AWSConsoleNavigated.png "Image of an AWS resource in the console")
 
 ## Add to browser
@@ -40,15 +42,15 @@ Sign in to an AWS account is required to access the AWS management console. AWS 
 
 ## Region selection
 
-Click the AWS Console Navigator extension icon to select the AWS region for navigation by resource ID and resourceType:resourceID or resourceType/resourceID (ARN substring). The selected region is highlighted in the popup and displayed as an Omnibox suggestion. Region selection is not required for navigation by ARN.
+Click the AWS Console Navigator extension icon to select the AWS region for navigation by resource ID and resourceType:resourceID or resourceType/resourceID (short ARN / ARN substring). The selected region is highlighted in the popup and displayed as an Omnibox suggestion. Region selection is not required for navigation by ARN.
 
 ![Image of AWS Console Navigator region selection popup](img/SelectRegionPopup.png "Image of AWS Console Navigator region selection popup")
 
 ## Supported resources
 
-### Navigate by resource ID or ARN or resourceType:resourceID or resourceType/resourceID (ARN substring)
+### Navigate by resource ID or ARN or resourceType:resourceID or resourceType/resourceID (short ARN / ARN substring)
 
-Resources that can be navigated by resource ID or ARN or resourceType:resourceID or resourceType:resourceID(ARN substring):
+Resources that can be navigated by resource ID or ARN or resourceType:resourceID or resourceType:resourceID(short ARN / ARN substring):
 
 - VPC
 - EC2 instance
@@ -67,9 +69,9 @@ Resources that can be navigated by resource ID or ARN or resourceType:resourceID
 - Transit gateway attachment
 - Transit gateway route table
 
-### Navigate by ARN or resourceType:resourceID or resourceType/resourceID (ARN substring) only
+### Navigate by ARN or resourceType:resourceID or resourceType/resourceID (short ARN / ARN substring) only
 
-Resources that can be navigated by ARN or service:resourceID or resourceType:resourceID (ARN substring) only:
+Resources that can be navigated by ARN or service:resourceID or resourceType:resourceID (short ARN / ARN substring) only:
 
 - S3 bucket
 - Codebuild project
@@ -81,6 +83,7 @@ Resources that can be navigated by ARN or service:resourceID or resourceType:res
 - DynamoDB table
 - ECS cluster
 - ECS task definition
+- ECS tasks
 - RDS DB
 - State machine state
 - IAM user
@@ -97,14 +100,14 @@ Resources that can be navigated by ARN or service:resourceID or resourceType:res
 - AWS service role IAM role
 - CodeCommit repository
 
-#### resourceType:resourceID or resourceType/resourceID (ARN substring) format examples
+#### resourceType:resourceID or resourceType/resourceID (short ARN / ARN substring) format examples
 
-Examples of the service:resourceID (ARN substring) format:
+Examples of the service:resourceID (short ARN / ARN substring) format:
 
-| ARN                                                             | resourceType:resourceID or resourceType/resourceID (ARN substring) |
-| --------------------------------------------------------------- | ------------------------------------------------------------------ |
-| arn:aws:ecs:ap-southeast-2:333173657890:cluster/service-cluster | cluster/service-cluster                                            |
-| arn:aws:dynamodb:us-east-1:206936434116:table/transaction       | table/transaction                                                  |
+| ARN                                                             | resourceType:resourceID or resourceType/resourceID (short ARN / ARN substring) |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| arn:aws:ecs:ap-southeast-2:333173657890:cluster/service-cluster | cluster/service-cluster                                                        |
+| arn:aws:dynamodb:us-east-1:206936434116:table/transaction       | table/transaction                                                              |
 
 ## Unsupported resources
 
@@ -113,6 +116,7 @@ These resources could not be supported:
 - DB security group
 - KMS key
 - Config rule
+- Glacier
 
 ## Contributing
 
