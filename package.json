@@ -1,6 +1,6 @@
 {
   "name": "awsconsolenavigator",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Go to resources in the AWS console from the Omnibox.",
   "type": "module",
   "scripts": {
