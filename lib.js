@@ -280,8 +280,14 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
   else if (service == 'cloudformation' && resourceType == 'stack') {
     var stackName = resourceID;
     var stackID = additionalID;
-    var newUrl = `https://${region}.console.aws.amazon.com/cloudformation/home?region=${region}#/stacks/stackinfo?stackId=arn%3Aaws%3Acloudformation%3A${region}%3A${accountID}%3Astack%2F${stackName}%2F${stackID}&filteringText=${stackName}&filteringStatus=active&viewNested=true&hideStacks=false`;
-    return (newUrl);
+    if (typeof (stackID) !== 'undefined') {
+      var newUrl = `https://${region}.console.aws.amazon.com/cloudformation/home?region=${region}#/stacks/stackinfo?stackId=arn%3Aaws%3Acloudformation%3A${region}%3A${accountID}%3Astack%2F${stackName}%2F${stackID}&filteringText=${stackName}&filteringStatus=active&viewNested=true&hideStacks=false`;
+      return (newUrl);
+    }
+    else {
+      var newUrl = `https://${region}.console.aws.amazon.com/cloudformation/home?region=${region}#/stacks?filteringStatus=active&filteringText=${stackName}&viewNested=true&hideStacks=false&stackId=`;
+      return (newUrl);
+    }
   }
   // Secretsmanager secret
   else if (service == 'secretsmanager' && resourceType == 'secret') {
@@ -358,7 +364,7 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
   }
   // IAM role
   else if (service == 'iam' && resourceType == 'role') {
-    if (typeof(additionalID) !== 'undefined') {
+    if (typeof (additionalID) !== 'undefined') {
       var additionalSections = additionalID.split("/");
       if (additionalSections.length >= 1) {
         var roleName = additionalSections[additionalSections.length - 1];
