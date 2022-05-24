@@ -10,9 +10,13 @@ To use, type keyword 'awss' space one of the following terms into the Omnibox:
 - resourceType:resourceID (short ARN / ARN substring)
 - resourceType/resourceID (short ARN / ARN substring)
 
+**Example using ARN**
+
 ![Image of user typing awss keyword and ARN into the Omnibox](img/awssARNKeywordOmnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
 ![Image of the AWS Console Navigator extension](img/AWSARNConsoleNavigatorExtension.png "Image of the AWS Console Navigator extension")
 ![Image of an AWS resource in the console](img/AWSConsoleNavigated.png "Image of an AWS resource in the console")
+
+**Example using keyword**
 
 ![Image of user typing awss keyword and ARN into the Omnibox](img/awssShortARNKeywordOmnibox.png "Image of user typing awss keyword and ARN into the Omnibox")
 ![Image of the AWS Console Navigator extension](img/AWSShortARNConsoleNavigatorExtension.png "Image of the AWS Console Navigator extension")
