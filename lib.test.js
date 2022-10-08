@@ -8,6 +8,7 @@ test('Test getServiceFromResourceType returns correct service for resource type'
   expect(getServiceFromResourceType('rule')).toBe('events');
   expect(getServiceFromResourceType('log-group')).toBe('logs');
   expect(getServiceFromResourceType('vpc')).toBe('ec2');
+  expect(getServiceFromResourceType('vpc-peering-connection')).toBe('ec2');
   expect(getServiceFromResourceType('instance')).toBe('ec2');
   expect(getServiceFromResourceType('security-group')).toBe('ec2');
   expect(getServiceFromResourceType('transit-gateway')).toBe('ec2');
@@ -77,11 +78,14 @@ test('Test parseARN parses ARNs correctly', () => {
   expect(parseARN('arn:aws:iam::432606950486:role/path/to/StartInstances')).toEqual({ service: 'iam', region: undefined, accountID: '432606950486', resourceType: 'role', resourceID: 'path', additionalID: 'to/StartInstances' });
   expect(parseARN('arn:aws:ecs:ap-southeast-1:266543935380:task/test-stack-cluster/b8a41f45f3626793dca5e1edf545c58c')).toEqual({ service: 'ecs', region: 'ap-southeast-1', accountID: '266543935380', resourceType: 'task', resourceID: 'test-stack-cluster', additionalID: 'b8a41f45f3626793dca5e1edf545c58c' });
   expect(parseARN('arn:aws:glacier:ap-southeast-2:574166373309:vaults/Music')).toEqual({ service: 'glacier', region: 'ap-southeast-2', accountID: '574166373309', resourceType: 'vaults', resourceID: 'Music', additionalID: undefined });
+  expect(parseARN('arn:aws:ec2:ap-southeast-2:430857736559:vpc-peering-connection/pcx-afbbbef498db72cae')).toEqual({ service: 'ec2', region: 'ap-southeast-2', accountID: '430857736559', resourceType: 'vpc-peering-connection', resourceID: 'pcx-afbbbef498db72cae', additionalID: undefined });
 });
 
 test('Test getNewURLFromResourceID returns correct URL', () => {
+  // TODO Add unit tests for all existing resources GitHub issue https://github.com/upsatish/AWSConsoleNavigator/issues/12 
   expect(getNewURLFromResourceID('tgw-attach-39cef96504dbdc969c', 'ap-southeast-2')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#TransitGatewayAttachments:transitGatewayAttachmentId=tgw-attach-39cef96504dbdc969c;sort=transitGatewayAttachmentId');
   expect(getNewURLFromResourceID('tgw-rtb-131fc21c22f0fdd6e3', 'ap-southeast-2')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#TransitGatewayRouteTables:transitGatewayRouteTableId=tgw-rtb-131fc21c22f0fdd6e3;sort=transitGatewayRouteTableId');
+  expect(getNewURLFromResourceID('pcx-afbbbef498db72cae', 'ap-southeast-2')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#PeeringConnectionDetails:VpcPeeringConnectionId=pcx-afbbbef498db72cae');
 });
 
 test('Test getNewURLFromResourceType returns correct URL', () => {
@@ -98,4 +102,5 @@ test('Test getNewURLFromResourceType returns correct URL', () => {
   expect(getNewURLFromResourceType('glacier', 'ap-southeast-2', '574166373309', 'vault', 'MoneyBin', undefined)).toBe('https://ap-southeast-2.console.aws.amazon.com/glacier/home?region=ap-southeast-2#/vaults');
   expect(getNewURLFromResourceType('cloudformation', 'ap-southeast-2', '184849109691', 'stack', 'service-stack', '082784ef-7108-468e-bc86-280f4139ad1b')).toBe('https://ap-southeast-2.console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#/stacks/stackinfo?stackId=arn%3Aaws%3Acloudformation%3Aap-southeast-2%3A184849109691%3Astack%2Fservice-stack%2F082784ef-7108-468e-bc86-280f4139ad1b&filteringText=service-stack&filteringStatus=active&viewNested=true&hideStacks=false')
   expect(getNewURLFromResourceType('cloudformation', 'ap-southeast-2', undefined, 'stack', 'service-stack')).toBe('https://ap-southeast-2.console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#/stacks?filteringStatus=active&filteringText=service-stack&viewNested=true&hideStacks=false&stackId=')
+  expect(getNewURLFromResourceType('ec2', 'ap-southeast-2', undefined, 'vpc-peering-connection', 'pcx-afbbbef498db72cae')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#PeeringConnectionDetails:VpcPeeringConnectionId=pcx-afbbbef498db72cae')
 });

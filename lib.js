@@ -47,6 +47,7 @@ function parseARN(arn) {
   }
 }
 
+// Get the service from the resource type for the ARN
 function getServiceFromResourceType(resourceType) {
   var map = new Map();
   map.set('project', 'codebuild');
@@ -54,6 +55,7 @@ function getServiceFromResourceType(resourceType) {
   map.set('rule', 'events');
   map.set('log-group', 'logs');
   map.set('vpc', 'ec2');
+  map.set('vpc-peering-connection', 'ec2');
   map.set('instance', 'ec2');
   map.set('security-group', 'ec2');
   map.set('transit-gateway', 'ec2');
@@ -84,10 +86,16 @@ function getServiceFromResourceType(resourceType) {
   return map.get(resourceType);
 }
 
+// Get URL from resource IDs that start with a prefix
 function getNewURLFromResourceID(resourceID, region) {
   // VPC
   if (resourceID.startsWith("vpc-") == true) {
     var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#VpcDetails:VpcId=${resourceID}`;
+    return (newUrl);
+  }
+  // VPC peering connection
+  else if (resourceID.startsWith('pcx-') == true) {
+    var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#PeeringConnectionDetails:VpcPeeringConnectionId=${resourceID}`;
     return (newUrl);
   }
   // EC2 instance
@@ -203,6 +211,11 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
   }
   // VPC
   else if (service == 'ec2' && resourceType == 'vpc') {
+    var newUrl = getNewURLFromResourceID(resourceID, region);
+    return (newUrl);
+  }
+  // VPC
+  else if (service == 'ec2' && resourceType == 'vpc-peering-connection') {
     var newUrl = getNewURLFromResourceID(resourceID, region);
     return (newUrl);
   }

@@ -8,7 +8,7 @@ Welcome! Thank you for contributing to AWS Console Navigator. There are several 
 
 - Test and submit issues, bug reports or feature requests
 - Improve documentation
-- There are many AWS resource types that haven't been implemented yet. Please submit a feature request and help implement and / or test.
+- There are many AWS resource types that haven't been implemented yet. Please submit a feature request and/or help implement and / or test.
 - Submit a pull request to fix bugs or implement feature requests
 - Help translate AWS Console Navigator to other languages
 - Share AWS Console Navigator with friends
@@ -69,7 +69,7 @@ To add a new resource type:
 - Add a new else if block to the getNewURLFromResourceID() function if required
 - Do the necessary region and resourceID substitutions as above
 - Add a map set to the getServiceFromResourceType() function for the service:resourceID (ARN substring) navigation
-- Test navigation by ARN, resourceID and ARN substring in browser
+- Automated test navigation by ARN, resourceID, ARN substring, URL substring in browser
 - Create and submit pull request referencing issue #
 
 ## TODO
@@ -86,3 +86,4 @@ To add a new resource type:
 - [ ] Any fix for EC2 snapshot ARN navigation? Currently defaults to snapshots "Owned by me", can't view public
 - [ ] Add more supported resources
 - [ ] Add automated tests of extension - puppeteer, selenium?
+- [ ] Document ARN parsing, variables and functions

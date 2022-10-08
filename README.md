@@ -7,8 +7,8 @@ To use, type keyword 'awss' space one of the following terms into the Omnibox:
 
 - ARN
 - AWS resource ID
-- resourceType:resourceID (short ARN / ARN substring)
-- resourceType/resourceID (short ARN / ARN substring)
+- resourceType:resourceID (short ARN / ARN substring / URL substring)
+- resourceType/resourceID (short ARN / ARN substring / URL substring)
 
 **Example using ARN**
 
@@ -36,13 +36,13 @@ Add the [AWS Console Navigator Firefox add-on](https://addons.mozilla.org/en-US/
 
 Sign in to an AWS account is required to access the AWS management console. AWS Console Navigator cannot switch accounts. Some example keywords of AWS console navigation:
 
-- awss vpc-5a03f891
-- awss i-478eb362bbbcfc439f
-- awss arn:aws:ecs:ap-southeast-2:333173657890:cluster/service-cluster
-- awss cluster/service-cluster
-- awss stack/service-cluster-stack
-- awss arn:aws:dynamodb:us-east-1:206936434116:table/transaction
-- awss table/transaction
+- awss vpc-5a03f891 (navigate by keyword)
+- awss i-478eb362bbbcfc439f (navigate by keyword)
+- awss arn:aws:ecs:ap-southeast-2:333173657890:cluster/service-cluster (navigate by ARN)
+- awss cluster/service-cluster (navigate by short ARN / ARN substring)
+- awss stack/service-cluster-stack (navigate by short ARN / ARN substring)
+- awss arn:aws:dynamodb:us-east-1:206936434116:table/transaction (navigate by ARN)
+- awss table/transaction (navigate by short ARN / ARN substring)
 
 ## Region selection
 
@@ -108,10 +108,10 @@ Resources that can be navigated by ARN or service:resourceID or resourceType:res
 
 Examples of the service:resourceID (short ARN / ARN substring) format:
 
-| ARN                                                             | resourceType:resourceID or resourceType/resourceID (short ARN / ARN substring) |
-| --------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| arn:aws:ecs:ap-southeast-2:333173657890:cluster/service-cluster | cluster/service-cluster                                                        |
-| arn:aws:dynamodb:us-east-1:206936434116:table/transaction       | table/transaction                                                              |
+| ARN                                                             | resourceType:resourceID or resourceType/resourceID (short ARN / ARN substring / URL substring) |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| arn:aws:ecs:ap-southeast-2:333173657890:cluster/service-cluster | cluster/service-cluster                                                                        |
+| arn:aws:dynamodb:us-east-1:206936434116:table/transaction       | table/transaction                                                                              |
 
 ## Unsupported resources
 
