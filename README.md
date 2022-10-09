@@ -72,6 +72,7 @@ Resources that can be navigated by resource ID or ARN or resourceType:resourceID
 - Virtual private gateway
 - Transit gateway attachment
 - Transit gateway route table
+- VPC peering connection
 
 ### Navigate by ARN or resourceType:resourceID or resourceType/resourceID (short ARN / ARN substring) only
 
