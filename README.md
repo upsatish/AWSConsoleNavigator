@@ -2,7 +2,7 @@
 
 ![AWS Console Navigator img](img/Region_dark-bg@4x.png "AWS Console Navigator img")
 
-AWS Console Navigator [browser extension](#add-to-browser). Go to resources in the AWS console from the Omnibox.
+AWS Console Navigator [browser extension](#add-to-browser). Go to AWS console resources from your browser's search box.
 To use, type keyword 'awss' space one of the following terms into the Omnibox:
 
 - ARN
