@@ -5,7 +5,7 @@
 AWS Console Navigator [browser extension](#add-to-browser). Go to AWS console resources from your browser's search box.
 To use, type keyword 'awss' space one of the following terms into the Omnibox:
 
-- ARN
+- ARN (Amazon Resource Name)
 - AWS resource ID
 - resourceType:resourceID (short ARN / ARN substring / URL substring)
 - resourceType/resourceID (short ARN / ARN substring / URL substring)
