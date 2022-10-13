@@ -1,16 +1,16 @@
 {
   "name": "AWS Console Navigator",
-  "description": "Go to resources in the AWS console from the Omnibox.",
-  "version": "2.0.7",
-  "manifest_version": 2,
+  "description": "Go to AWS console resources from your browser's search box.",
+  "version": "2.0.8",
+  "manifest_version": 3,
   "background": {
-    "persistent": false,
-    "page": "background.html"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "omnibox": {
     "keyword": "awss"
   },
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_title": "Click to set AWS region"
   },
