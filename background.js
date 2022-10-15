@@ -1,6 +1,6 @@
 'use strict';
 
-import { parseARN, getServiceFromResourceType, getNewURLFromResourceID, getNewURLFromResourceType } from "./lib.js";
+import { parseARN, getServiceFromResourceType, getNewURLFromResourceID, getNewURLFromResourceType, getNewURLFromKeyword } from "./lib.js";
 
 var region;
 
@@ -67,6 +67,11 @@ chrome.omnibox.onInputEntered.addListener(
     // Navigate by Resource ID
     else if (text.includes("-") == true) {
       var newURL = getNewURLFromResourceID(text, region);
+      navigate(newURL);
+    }
+    // Navigate by keyword
+    else if (text.includes(" ") == true) {
+      var newURL = getNewURLFromKeyword(text, region);
       navigate(newURL);
     }
     else {

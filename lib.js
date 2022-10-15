@@ -420,6 +420,17 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
   }
 }
 
+function getNewURLFromKeyword(text, region) {
+  let sections = text.split(' ');
+  let keyword = sections[0];
+  let resourceID = sections[1];
+  // CodePipeline
+  if (keyword.indexOf('pipelines') != -1) {
+    let newUrl = `https://${region}.console.aws.amazon.com/codesuite/codepipeline/pipelines/${resourceID}/view?region=${region}`;
+    return (newUrl);
+  }
+}
+
 function unsupportedResourceAlert(text) {
   alert(
     `Sorry, unsupported AWS resource - ${text}.
@@ -438,5 +449,6 @@ export {
   parseARN,
   getServiceFromResourceType,
   getNewURLFromResourceID,
-  getNewURLFromResourceType
+  getNewURLFromResourceType,
+  getNewURLFromKeyword
 };

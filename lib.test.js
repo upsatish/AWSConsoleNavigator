@@ -1,6 +1,6 @@
 'use strict';
 
-import { parseARN, getServiceFromResourceType, getNewURLFromResourceID, getNewURLFromResourceType } from "./lib.js";
+import { parseARN, getServiceFromResourceType, getNewURLFromResourceID, getNewURLFromResourceType, getNewURLFromKeyword } from "./lib.js";
 
 test('Test getServiceFromResourceType returns correct service for resource type', () => {
   expect(getServiceFromResourceType('project')).toBe('codebuild');
@@ -104,3 +104,9 @@ test('Test getNewURLFromResourceType returns correct URL', () => {
   expect(getNewURLFromResourceType('cloudformation', 'ap-southeast-2', undefined, 'stack', 'service-stack')).toBe('https://ap-southeast-2.console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#/stacks?filteringStatus=active&filteringText=service-stack&viewNested=true&hideStacks=false&stackId=')
   expect(getNewURLFromResourceType('ec2', 'ap-southeast-2', undefined, 'vpc-peering-connection', 'pcx-afbbbef498db72cae')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#PeeringConnectionDetails:VpcPeeringConnectionId=pcx-afbbbef498db72cae')
 });
+
+test('Test getNewURLFromKeyword returns correct URL', () => {
+  expect(getNewURLFromKeyword('pipelines Test-Pipeline', 'ap-southeast-1')).toBe('https://ap-southeast-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/Test-Pipeline/view?region=ap-southeast-1');
+  expect(getNewURLFromKeyword('pipeline Test-Pipeline', 'ap-southeast-1')).toBe('https://ap-southeast-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/Test-Pipeline/view?region=ap-southeast-1');
+});
+

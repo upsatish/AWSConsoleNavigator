@@ -1,9 +1,11 @@
 {
   "name": "awsconsolenavigator",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Go to resources in the AWS console from the Omnibox.",
   "type": "module",
   "scripts": {
+    "build": "zip AWSConsoleNavigator.zip img/Region_dark-bg@4x.png background.html background.js lib.js CONTRIBUTING.md LICENSE manifest.json popup.css popup.html popup.js README.md"
+,
     "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "devDependencies": {
