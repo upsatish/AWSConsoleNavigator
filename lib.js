@@ -422,12 +422,108 @@ function getNewURLFromResourceType(service, region, accountID, resourceType, res
 
 function getNewURLFromKeyword(text, region) {
   let sections = text.split(' ');
-  let keyword = sections[0];
-  let resourceID = sections[1];
-  // CodePipeline
-  if (keyword.indexOf('pipelines') != -1) {
-    let newUrl = `https://${region}.console.aws.amazon.com/codesuite/codepipeline/pipelines/${resourceID}/view?region=${region}`;
-    return (newUrl);
+  if (sections.length == 2) {
+    let keyword = sections[0];
+    let resourceID = sections[1];
+    // CodePipeline
+    if (keyword.indexOf('pipelines') != -1) {
+      let newUrl = `https://${region}.console.aws.amazon.com/codesuite/codepipeline/pipelines/${resourceID}/view?region=${region}`;
+      return (newUrl);
+    }
+  } else if (sections.length == 1) {
+    let resourceID = sections[0];
+    // VPC
+    if (resourceID.startsWith('vpc-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#VpcDetails:VpcId=${resourceID}`;
+      return newUrl;
+    }
+    // VPC peering connection
+    else if (resourceID.startsWith('pcx-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#PeeringConnectionDetails:VpcPeeringConnectionId=${resourceID}`;
+      return newUrl;
+    }
+    // EC2 instance
+    else if (resourceID.startsWith('i-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#InstanceDetails:instanceId=${resourceID}`;
+      return newUrl;
+    }
+    // Security group
+    else if (resourceID.startsWith('sg-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#SecurityGroup:groupId=${resourceID}`;
+      return newUrl;
+    }
+    // Transit gateway attachment
+    else if (resourceID.startsWith('tgw-attach-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#TransitGatewayAttachments:transitGatewayAttachmentId=${resourceID};sort=transitGatewayAttachmentId`;
+      return newUrl;
+    }
+    // Transit gateway route table
+    else if (resourceID.startsWith('tgw-rtb-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#TransitGatewayRouteTables:transitGatewayRouteTableId=${resourceID};sort=transitGatewayRouteTableId`;
+      return newUrl;
+    }
+    // Transit gateway
+    else if (resourceID.startsWith('tgw-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#TransitGateways:transitGatewayId=${resourceID}`;
+      return newUrl;
+    }
+    // DHCP options sets
+    else if (resourceID.startsWith('dopt-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#dhcpOptions:filter=${resourceID}`;
+      return newUrl;
+    }
+    // Internet gateway
+    else if (resourceID.startsWith('igw-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#igws:search=${resourceID}`;
+      return newUrl;
+    }
+    // Network ACL
+    else if (resourceID.startsWith('acl-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#acls:filter=${resourceID}`;
+      return newUrl;
+    }
+    // Subnet
+    else if (resourceID.startsWith('subnet-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#subnets:filter=${resourceID}`;
+      return newUrl;
+    }
+    // Route table
+    else if (resourceID.startsWith('rtb-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#routetables:filter=${resourceID}`;
+      return newUrl;
+    }
+    // Network interface
+    else if (resourceID.startsWith('eni-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#NIC:networkInterfaceId=${resourceID};sort=networkInterfaceId`;
+      return newUrl;
+    }
+    // Volume
+    else if (resourceID.startsWith('vol-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Volumes:volumeId=${resourceID};sort=desc:createTime`;
+      return newUrl;
+    }
+    // Key pair
+    else if (resourceID.startsWith('key-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#KeyPairs:key-pair-id=${resourceID}`;
+      return newUrl;
+    }
+    // AMI
+    else if (resourceID.startsWith('ami-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Images:visibility=owned-by-me;imageId=${resourceID};sort=name`;
+      return newUrl;
+    }
+    // Virtual private gateway
+    else if (resourceID.startsWith('vgw-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/vpc/home?region=${region}#VpnGateways:search=${resourceID};sort=VpnGatewayId`;
+      return newUrl;
+    }
+    // EC2 snapshot
+    else if (resourceID.startsWith('snap-') == true) {
+      var newUrl = `https://${region}.console.aws.amazon.com/ec2/v2/home?region=${region}#Snapshots:visibility=owned-by-me;snapshotId=${resourceID};sort=snapshotId`;
+      return newUrl;
+    }
+  } else {
+    unsupportedResourceAlert(text);
   }
 }
 

@@ -83,9 +83,9 @@ test('Test parseARN parses ARNs correctly', () => {
 
 test('Test getNewURLFromResourceID returns correct URL', () => {
   // TODO Add unit tests for all existing resources GitHub issue https://github.com/upsatish/AWSConsoleNavigator/issues/12 
-  expect(getNewURLFromResourceID('tgw-attach-39cef96504dbdc969c', 'ap-southeast-2')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#TransitGatewayAttachments:transitGatewayAttachmentId=tgw-attach-39cef96504dbdc969c;sort=transitGatewayAttachmentId');
-  expect(getNewURLFromResourceID('tgw-rtb-131fc21c22f0fdd6e3', 'ap-southeast-2')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#TransitGatewayRouteTables:transitGatewayRouteTableId=tgw-rtb-131fc21c22f0fdd6e3;sort=transitGatewayRouteTableId');
-  expect(getNewURLFromResourceID('pcx-afbbbef498db72cae', 'ap-southeast-2')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#PeeringConnectionDetails:VpcPeeringConnectionId=pcx-afbbbef498db72cae');
+  expect(getNewURLFromKeyword('tgw-attach-39cef96504dbdc969c', 'ap-southeast-2')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#TransitGatewayAttachments:transitGatewayAttachmentId=tgw-attach-39cef96504dbdc969c;sort=transitGatewayAttachmentId');
+  expect(getNewURLFromKeyword('tgw-rtb-131fc21c22f0fdd6e3', 'ap-southeast-2')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#TransitGatewayRouteTables:transitGatewayRouteTableId=tgw-rtb-131fc21c22f0fdd6e3;sort=transitGatewayRouteTableId');
+  expect(getNewURLFromKeyword('pcx-afbbbef498db72cae', 'ap-southeast-2')).toBe('https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#PeeringConnectionDetails:VpcPeeringConnectionId=pcx-afbbbef498db72cae');
 });
 
 test('Test getNewURLFromResourceType returns correct URL', () => {
@@ -109,4 +109,3 @@ test('Test getNewURLFromKeyword returns correct URL', () => {
   expect(getNewURLFromKeyword('pipelines Test-Pipeline', 'ap-southeast-1')).toBe('https://ap-southeast-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/Test-Pipeline/view?region=ap-southeast-1');
   expect(getNewURLFromKeyword('pipeline Test-Pipeline', 'ap-southeast-1')).toBe('https://ap-southeast-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/Test-Pipeline/view?region=ap-southeast-1');
 });
-
